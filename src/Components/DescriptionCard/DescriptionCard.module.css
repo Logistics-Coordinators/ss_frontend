@@ -1,0 +1,24 @@
+.cardContainer {
+  background-color: rgb(49, 48, 48);
+  color: white;
+  margin: 1rem;
+  padding: 10px 20px;
+  border-radius: 12px;
+  width: 15rem;
+  height: 12rem;
+}
+.cardContainer:hover {
+  background-color: #e84b01;
+  color: white;
+}
+
+.cardHeading {
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-family: "Teko", sans-serif;
+}
+
+.cardSubtitle {
+  font-size: 0.8rem;
+  font-family: "Montserrat", sans-serif;
+}

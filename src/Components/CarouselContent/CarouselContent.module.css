@@ -1,0 +1,28 @@
+.imageContainer {
+  margin-top: 2rem;
+  width: 50%;
+}
+
+.textContent {
+  width: 40%;
+  /* border: 2px solid green; */
+  margin: 0 4rem;
+}
+
+.heading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: #e84b01;
+  text-transform: uppercase;
+}
+
+.subHeading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  padding-right: 1rem;
+  font-size: 0.8rem;
+  line-height: 2;
+  text-transform: uppercase;
+  color: black;
+}

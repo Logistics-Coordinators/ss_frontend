@@ -1,0 +1,36 @@
+.formContainer {
+  font-family: "Poppins", sans-serif;
+  background-color: #e84b01;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-top: 2rem;
+  color: black;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+
+.fieldsContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-family: "Poppins", sans-serif;
+}
+
+.inputField {
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px;
+  background-color: white;
+}
