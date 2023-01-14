@@ -35,6 +35,7 @@ function EmployeeApplication() {
           width={130}
           style={{ marginTop: "1rem" }}
           draggable={false}
+          alt="logo"
         />
       </div>
       <div className="layoutContainer">
@@ -52,7 +53,7 @@ function EmployeeApplication() {
                 <div
                   style={{
                     backgroundColor:
-                      index + 1 == currentUserFormStatus ||
+                      index + 1 === currentUserFormStatus ||
                       index + 1 <= formCompletionStatus
                         ? "#E84B01"
                         : "white",
@@ -83,19 +84,19 @@ function EmployeeApplication() {
             ))}
           </div>
           <div style={{ width: "90%" }}>
-            {currentUserFormStatus == 1 ? <GeneralInfo /> : null}
-            {currentUserFormStatus == 2 ? (
+            {currentUserFormStatus === 1 ? <GeneralInfo /> : null}
+            {currentUserFormStatus === 2 ? (
               <div>
                 <LineHaulDriver />
               </div>
             ) : null}
-            {currentUserFormStatus == 3 ? (
+            {currentUserFormStatus === 3 ? (
               <div>
                 <EmploymentRecord />
               </div>
             ) : null}
-            {currentUserFormStatus == 4 ? <div>Upload License</div> : null}
-            {currentUserFormStatus == 5 ? <div>On Duty Hours</div> : null}
+            {currentUserFormStatus === 4 ? <div>Upload License</div> : null}
+            {currentUserFormStatus === 5 ? <div>On Duty Hours</div> : null}
           </div>
         </div>
       </div>

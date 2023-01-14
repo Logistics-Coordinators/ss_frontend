@@ -26,6 +26,7 @@ function Navbar() {
         </a>
         <a
           href="https://www.logistics-coordinators.com/services/"
+          without rel="noreferrer"
           target="_blank"
         >
           <span className={styles.link}>Our Service</span>

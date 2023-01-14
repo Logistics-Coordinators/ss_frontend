@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 
 import styles from "./FormComp.module.css";
 import {
@@ -15,7 +15,7 @@ function GeneralInfo() {
   const [showSectionOne, setShowSectionOne] = useState(true);
 
   // Button States
-  const [isNextContinueDisabled, setIsNextContinueDisabled] = useState(true);
+  // const [isNextContinueDisabled, setIsNextContinueDisabled] = useState(true);
 
   // Function to Submit filled education form
 
@@ -46,16 +46,16 @@ function GeneralInfo() {
 
   // Function to Cancel filled education form
   function handleEduFormCancel(values) {
-    eduHistory.length == 0
+    eduHistory.length === 0
       ? alert("Must have atleast one Education Entry!!")
       : resetEduForm(values);
   }
 
   // Function to handle Education Entry delete
   function handleEduEntryDelete(id) {
-    eduHistory.length == 1
+    eduHistory.length === 1
       ? alert("Must have atleast one Education Entry!!")
-      : setEduHistory((current) => current.filter((ele, index) => index != id));
+      : setEduHistory((current) => current.filter((ele, index) => index !== id));
   }
 
   // Final Form Submit Handler Function
@@ -321,7 +321,7 @@ function GeneralInfo() {
                         type="button"
                         onClick={(e) => (
                           e.preventDefault(),
-                          eduHistory.length != 0
+                          eduHistory.length !== 0
                             ? setShowInputEducationHistory(false)
                             : setShowInputEducationHistory(true),
                           setShowSectionOne(false)

@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import styles from "../FormComp.module.css";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import {  Field } from "formik";
 
 // Component to display education card
 const EducationCard = ({ edu, id, handleEduEntryDelete, existingCount }) => {
