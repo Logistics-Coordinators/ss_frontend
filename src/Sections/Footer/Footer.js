@@ -41,8 +41,15 @@ function Footer() {
             <a
               href="https://www.linkedin.com/company/logistics-coordinators/"
               target="_blank"
+              without
+              rel="noreferrer"
             >
-              <img src={linkedinLogo} width={40} className={styles.socials} />
+              <img
+                src={linkedinLogo}
+                width={40}
+                className={styles.socials}
+                alt="logo"
+              />
             </a>
           </div>
         </div>
@@ -52,6 +59,8 @@ function Footer() {
               <a
                 href="https://www.logistics-coordinators.com/services/"
                 target="_blank"
+                without
+                rel="noreferrer"
               >
                 SERVICES
               </a>
@@ -62,7 +71,12 @@ function Footer() {
           </div>
           <div className={styles.subFooter}>
             <p className={styles.footerLink}>ABOUT</p>
-            <a href="https://www.logistics-coordinators.com/" target="_blank">
+            <a
+              href="https://www.logistics-coordinators.com/"
+              target="_blank"
+              without
+              rel="noreferrer"
+            >
               <p className={styles.footerLink}>WEBSITE</p>
             </a>
             <a href="mailto:info@loadlc.com">

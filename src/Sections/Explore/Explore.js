@@ -29,6 +29,7 @@ function Explore() {
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
+            title="bg-img"
           ></iframe>
         </div>
       </div>

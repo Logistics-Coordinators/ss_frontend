@@ -15,7 +15,7 @@ function CarouselContent({ imgSrc, heading, subheading, isImageOnLeft }) {
       }}
     >
       <div className={styles.imageContainer}>
-        <img src={imgSrc} width={"100%"} />
+        <img src={imgSrc} width={"100%"} alt="logo" />
       </div>
       <div className={styles.textContent}>
         <p className={styles.heading}>{heading}</p>

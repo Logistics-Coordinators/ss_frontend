@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 
 import styles from "./FormComp.module.css";
 
@@ -39,14 +39,14 @@ function EmploymentRecord() {
 
   // Function to handle Education Entry delete
   function handleEmpEntryDelete(id) {
-    empHistory.length == 1
+    empHistory.length === 1
       ? alert("Must have atleast one Employment Entry!!")
-      : setEmpHistory((current) => current.filter((ele, index) => index != id));
+      : setEmpHistory((current) => current.filter((ele, index) => index !== id));
   }
 
   // Function to Cancel filled education form
   function handleEmpFormCancel(values) {
-    empHistory.length == 0
+    empHistory.length === 0
       ? alert("Must have atleast one Employment Entry!!")
       : resetEmpForm(values);
   }

@@ -35,22 +35,22 @@ function Services() {
         </div>
         <div className={styles.services}>
           <div className={styles.imageContainer}>
-            <img width={120} src={FMS} draggable={false} />
+            <img width={120} src={FMS} draggable={false} alt="logo" />
           </div>
           <div className={styles.imageContainer}>
-            <img width={110} src={ERS} draggable={false} />
+            <img width={110} src={ERS} draggable={false} alt="logo" />
           </div>
           <div className={styles.imageContainer}>
-            <img src={ITSolutions} draggable={false} />
+            <img src={ITSolutions} draggable={false} alt="logo" />
           </div>
           <div className={styles.imageContainer}>
-            <img src={LabourCentral} draggable={false} />
+            <img src={LabourCentral} draggable={false} alt="logo" />
           </div>
           <div className={styles.imageContainer}>
-            <img src={Load} draggable={false} />
+            <img src={Load} draggable={false} alt="logo" />
           </div>
           <div className={styles.imageContainer}>
-            <img src={LogisticsCordinators} draggable={false} />
+            <img src={LogisticsCordinators} draggable={false} alt="logo" />
           </div>
         </div>
       </div>

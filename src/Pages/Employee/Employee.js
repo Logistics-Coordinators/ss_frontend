@@ -37,6 +37,7 @@ function Employee() {
           onClick={() => {
             navigate("/");
           }}
+          alt="logo"
         />
       </div>
       <div
