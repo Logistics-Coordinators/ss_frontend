@@ -18,7 +18,7 @@ function EmployeeApplication() {
     "On Duty Hours",
   ];
 
-  const [formCompletionStatus, setFormCompletionStatus] = useState(0);
+  const [formCompletionStatus] = useState(0);
   const [currentUserFormStatus, setCurrentUserFormStatus] = useState(1);
 
   return (

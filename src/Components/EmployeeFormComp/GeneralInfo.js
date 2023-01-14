@@ -55,7 +55,9 @@ function GeneralInfo() {
   function handleEduEntryDelete(id) {
     eduHistory.length === 1
       ? alert("Must have atleast one Education Entry!!")
-      : setEduHistory((current) => current.filter((ele, index) => index !== id));
+      : setEduHistory((current) =>
+          current.filter((ele, index) => index !== id)
+        );
   }
 
   // Final Form Submit Handler Function
@@ -319,13 +321,13 @@ function GeneralInfo() {
                           right: "2rem",
                         }}
                         type="button"
-                        onClick={(e) => (
-                          e.preventDefault(),
+                        onClick={(e) =>
+                          e.preventDefault() &&
+                          setShowSectionOne(false) &&
                           eduHistory.length !== 0
                             ? setShowInputEducationHistory(false)
-                            : setShowInputEducationHistory(true),
-                          setShowSectionOne(false)
-                        )}
+                            : setShowInputEducationHistory(true)
+                        }
                       >
                         Next
                       </button>

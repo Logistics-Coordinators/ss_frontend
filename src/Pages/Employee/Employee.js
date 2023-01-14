@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import styles from "./Employee.module.css";
@@ -14,10 +14,10 @@ function Employee() {
 
   const fileTypes = ["PDF", "DOCX"];
 
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
 
   const handleChange = (file) => {
-    setFile(file);
+    // setFile(file);
   };
 
   return (
