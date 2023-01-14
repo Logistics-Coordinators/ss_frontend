@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import styles from "../FormComp.module.css";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Field } from "formik";
 
 const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
   return (
@@ -21,7 +20,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
             style={{ width: "3rem", padding: "6px 35px" }}
             type="button"
             onClick={() => {
-                handleEmpEntryDelete(id);
+              handleEmpEntryDelete(id);
             }}
           >
             Delete

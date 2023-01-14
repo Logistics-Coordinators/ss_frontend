@@ -27,6 +27,7 @@ function Company() {
           onClick={() => {
             navigate("/");
           }}
+          alt="logo"
         />
       </div>
       <div
