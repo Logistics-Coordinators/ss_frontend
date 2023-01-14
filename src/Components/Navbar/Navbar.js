@@ -26,13 +26,14 @@ function Navbar() {
         </a>
         <a
           href="https://www.logistics-coordinators.com/services/"
-          without rel="noreferrer"
+          without
+          rel="noreferrer"
           target="_blank"
         >
           <span className={styles.link}>Our Service</span>
         </a>
         <span className={styles.link}>
-          <p onClick={() => navigate("/login")}>
+          <p onClick={() => navigate("/employeeform")}>
             <span className={styles.link}>Login</span>
           </p>
         </span>
