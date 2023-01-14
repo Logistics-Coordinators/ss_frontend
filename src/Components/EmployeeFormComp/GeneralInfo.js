@@ -65,6 +65,16 @@ function GeneralInfo() {
     console.log(val);
   };
 
+  const handleNextClick = (e) => {
+    e.preventDefault();
+
+    eduHistory.length !== 0
+      ? setShowInputEducationHistory(false)
+      : setShowInputEducationHistory(true);
+
+    setShowSectionOne(false);
+  };
+
   return (
     <div>
       <Formik
@@ -321,13 +331,7 @@ function GeneralInfo() {
                           right: "2rem",
                         }}
                         type="button"
-                        onClick={(e) =>
-                          e.preventDefault() &&
-                          setShowSectionOne(false) &&
-                          eduHistory.length !== 0
-                            ? setShowInputEducationHistory(false)
-                            : setShowInputEducationHistory(true)
-                        }
+                        onClick={(e) => handleNextClick(e)}
                       >
                         Next
                       </button>
