@@ -1,9 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./Navbar.module.css";
 
 import LabourConnect from "../../Assets/LabourConnect-blackbg.jpg";
 
 function Navbar() {
+  let navigate = useNavigate();
+
   return (
     <div className={styles.navbarContainer}>
       <div className={styles.logo}>
@@ -27,12 +31,9 @@ function Navbar() {
           <span className={styles.link}>Our Service</span>
         </a>
         <span className={styles.link}>
-          <a
-            href="https://www.logistics-coordinators.com/services/"
-            target="_blank"
-          >
-            <span className={styles.link}>Opportunities</span>
-          </a>
+          <p onClick={() => navigate("/login")}>
+            <span className={styles.link}>Login</span>
+          </p>
         </span>
       </div>
     </div>

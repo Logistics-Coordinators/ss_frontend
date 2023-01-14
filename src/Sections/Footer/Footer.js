@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/Layout.css";
+import "../../styles/landing-global.css";
 import styles from "./Footer.module.css";
 
 import linkedinLogo from "../../Assets/linkedin.svg";

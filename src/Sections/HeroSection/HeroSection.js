@@ -48,8 +48,8 @@ function HeroSection() {
         // border: "2px solid white",
       }}
     >
+      <Navbar />
       <div className="layoutContainer">
-        <Navbar />
         <div className={styles.contentContainer}>
           <p className={styles.heading}>
             TEMPORARY AND PERMANENT RECRUITMENT SERVICES

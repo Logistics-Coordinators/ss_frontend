@@ -24,6 +24,9 @@
 
 .inputField {
   width: 100%;
+  border-radius: 3px;
+  height: 2.3rem;
+  padding: 0 10px;
 }
 
 .button {
