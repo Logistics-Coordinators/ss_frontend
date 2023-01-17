@@ -1,6 +1,18 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid red; */
+  min-height: 100vh;
+  height: auto;
+  width: 100vw;
+}
+
 .imageContainer {
   margin-top: 2rem;
   width: 50%;
+  /* border: 2px solid red; */
+  min-width: 30rem;
 }
 
 .textContent {
@@ -25,4 +37,21 @@
   line-height: 2;
   text-transform: uppercase;
   color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .imageContainer {
+    min-width: 20rem;
+  }
+
+  .textContent {
+    width: 100%;
+  }
 }

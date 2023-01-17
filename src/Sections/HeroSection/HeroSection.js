@@ -36,47 +36,67 @@ function HeroSection() {
   return (
     <div
       style={{
-        backgroundImage: `url(${slideImages[0].url})`,
+        position: "relative",
+        zIndex: 0,
         color: "white",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        width: "100vw",
-        height: "100vh",
-        display: "grid",
-        gridTemplateColumns: "1fr",
-        // border: "2px solid white",
+        width: "100%",
+        // border: "2px solid red",
       }}
     >
-      <Navbar />
-      <div className="layoutContainer">
-        <div className={styles.contentContainer}>
-          <p className={styles.heading}>
-            TEMPORARY AND PERMANENT RECRUITMENT SERVICES
-          </p>
-          <p className={styles.subHeading}>
-            WE ARE A COMPANY WHICH MAKE TRANSPORT EASIER AND FASTER. CANADA'S
-            BIGGEST LOGISTICS COMPANY.
-          </p>
-          <div className={styles.buttonContainer}>
-            <button
-              className={styles.button}
-              onClick={() => navigate("/employee")}
-            >
-              EMPLOYEES START HERE
-            </button>
-            <button
-              className={styles.button}
-              onClick={() => navigate("/company")}
-            >
-              COMPANIES START HERE
-            </button>
+      <div
+        style={{
+          backgroundColor: "rgb(35, 35, 35, 0.463)",
+          width: "100%",
+          height: "100vh",
+          minHeight: "100%",
+          zIndex: 0,
+        }}
+      >
+        <img
+          src={slideImages[0].url}
+          style={{
+            position: "absolute",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            objectFit: "cover",
+            width: "100%",
+            height: "100vh",
+            minHeight: "100%",
+            zIndex: -1,
+          }}
+          alt="logo"
+        />
+        <Navbar />
+        <div className="layoutContainer">
+          <div className={styles.contentContainer}>
+            <p className={styles.heading}>
+              TEMPORARY AND PERMANENT RECRUITMENT SERVICES
+            </p>
+            <p className={styles.subHeading}>
+              WE ARE A COMPANY WHICH MAKE TRANSPORT EASIER AND FASTER. CANADA'S
+              BIGGEST LOGISTICS COMPANY.
+            </p>
+            <div className={styles.buttonContainer}>
+              <button
+                className={styles.button}
+                onClick={() => navigate("/employee")}
+              >
+                EMPLOYEES START HERE
+              </button>
+              <button
+                className={styles.button}
+                onClick={() => navigate("/company")}
+              >
+                COMPANIES START HERE
+              </button>
+            </div>
           </div>
-        </div>
-        <div className={styles.subHero}>
-          <div className={styles.rightSubContainer}>
-            <span className={styles.orangeLine}></span>
-            <p className={styles.subText}>WE BELIEVE IN SERVICE</p>
+          <div className={styles.subHero}>
+            <div className={styles.rightSubContainer}>
+              <span className={styles.orangeLine}></span>
+              <p className={styles.subText}>WE BELIEVE IN SERVICE</p>
+            </div>
           </div>
         </div>
       </div>

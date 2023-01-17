@@ -1,6 +1,10 @@
 .buttonContainer {
   /* border: 2px solid whitesmoke; */
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .button {
@@ -9,11 +13,14 @@
   color: #fff;
   font-weight: bold;
   border-radius: 8px;
-  font-size: 1.2rem;
-  margin: 0 3rem;
-  padding: 25px 30px;
+  /* !Fix font size of button */
+  font-size: 1rem;
+  margin: 5rem;
+  /* margin-top: .6rem; */
+  padding: 15px;
+  border: 0;
+  outline: none;
 }
-
 .button:hover {
   cursor: pointer;
 }
@@ -36,4 +43,16 @@
   line-height: 2;
   color: black;
   /* border: 2px solid green; */
+}
+
+@media screen and (max-width: 768px) {
+  .buttonContainer {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .button {
+    font-size: 0.8rem;
+  }
 }

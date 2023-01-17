@@ -3,19 +3,20 @@
   margin: auto;
   /* border: 2px solid red; */
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   /* align-items: center; */
-  flex-wrap: wrap;
   width: 100%;
 }
 
 .exploreLeft {
   /* border: 2px solid red; */
-  width: 50%;
+  width: 45%;
 }
 
 .exploreRight {
   /* border: 2px solid green; */
+  width: 50%;
+  overflow: hidden;
 }
 
 .exploreHeading {
@@ -29,7 +30,6 @@
 }
 
 .exploreSubtitle {
-  width: 70%;
   color: black;
   font-size: 1.1rem;
   font-family: "Inter";
@@ -64,4 +64,59 @@
   font-size: 0.7rem;
   padding: 0 25px;
   line-height: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .exploreContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .exploreHeading {
+    font-size: 2.5rem;
+    /* border: 2px solid red; */
+    width: 100%;
+    margin: 0;
+  }
+  .exploreSubtitle {
+    width: 100%;
+    margin: 0;
+    font-size: 0.8rem;
+    margin: 1rem 0;
+  }
+
+  .exploreRight {
+    width: 30rem;
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 528px) {
+  .exploreContainer {
+    margin-top: 2rem;
+    /* border: 2px solid red; */
+  }
+  .exploreRight {
+    width: 20rem;
+    height: 250px;
+  }
+  .exploreSubtitle {
+    font-size: 0.6rem;
+    line-height: 1rem;
+  }
+
+  .exploreHeading {
+    font-size: 1.8rem;
+  }
+
+  .exploreContent {
+    width: 100%;
+  }
+
+  .exploreContentSubTitle {
+    font-size: 0.6rem;
+    line-height: 1rem;
+  }
 }

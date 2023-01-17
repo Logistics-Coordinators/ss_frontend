@@ -10,17 +10,20 @@ function Banner() {
   let navigate = useNavigate();
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       <div
         style={{
           backgroundImage: `url(${background})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
+          objectFit: "cover",
           width: "100vw",
           height: "100vh",
-          display: "grid",
-          gridTemplateColumns: "1fr",
+          position: "absolute",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
           // border: "2px solid white",
         }}
       >
@@ -39,7 +42,7 @@ function Banner() {
           </button>
         </div>
       </div>
-      <div className="layoutContainer">
+      {/* <div className="layoutContainer">
         <div
           style={{
             // border: "2px solid white",
@@ -56,7 +59,7 @@ function Banner() {
             candidates coming back to us.
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

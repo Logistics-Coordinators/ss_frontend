@@ -39,7 +39,7 @@ function Description() {
         diverse team, generates the reliable support our clients have come to
         know and respect.
       </p>
-      <div style={{ height: "80vh" }}>
+      <div>
         <div
           style={{
             display: "flex",
@@ -47,8 +47,7 @@ function Description() {
             alignItems: "center",
             flexWrap: "wrap",
             margin: "auto",
-            width: "80%",
-            height: "60vh",
+            width: "85%",
             // border: "2px solid red",
           }}
         >

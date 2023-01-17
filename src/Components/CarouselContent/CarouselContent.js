@@ -4,13 +4,8 @@ import styles from "./CarouselContent.module.css";
 function CarouselContent({ imgSrc, heading, subheading, isImageOnLeft }) {
   return (
     <div
+    className={styles.container}
       style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        // border: "2px solid red",
-        height: "100vh",
-        width: "100vw",
         flexDirection: isImageOnLeft ? "row" : "row-reverse",
       }}
     >

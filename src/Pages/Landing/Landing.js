@@ -3,7 +3,7 @@ import React from "react";
 import HeroSection from "../../Sections/HeroSection/HeroSection";
 import Description from "../../Sections/DescriptionSection/Description";
 import Carousel from "../../Sections/Carousel/Carousel";
-import Banner from "../../Sections/Banner/Banner";
+// import Banner from "../../Sections/Banner/Banner";
 import Explore from "../../Sections/Explore/Explore";
 import Services from "../../Sections/Services/Services";
 import Footer from "../../Sections/Footer/Footer";
@@ -15,7 +15,7 @@ function Landing() {
       <Description />
       <Carousel />
       <Explore />
-      <Banner />
+      {/* <Banner /> */}
       <Services />
       <Footer />
     </div>

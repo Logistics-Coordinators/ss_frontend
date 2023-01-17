@@ -2,6 +2,7 @@
   /* background-color: yellow; */
   margin-top: 3rem;
   width: 40%;
+  min-width: 15rem;
 }
 
 .heading {

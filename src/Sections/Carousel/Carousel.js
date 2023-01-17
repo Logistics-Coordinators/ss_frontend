@@ -15,21 +15,14 @@ function Carousel() {
   return (
     <div>
       <div className="layoutContainer">
-        <div
-          style={{
-            // border: "2px solid white",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <p className={styles.leftText}>WHAT MAKES US DIFFERENT</p>
-          <p className={styles.rightText}>
+        <div className={styles.carouselHeading}>
+          <div className={styles.leftText}>WHAT MAKES US DIFFERENT</div>
+          <div className={styles.rightText}>
             We don't just follow the same recruitment process on every vacancy.
             We create a bespoke campaign for all clients as standard and use our
             industry knowledge to provide the level of consultation you'd expect
             from a team of experts.
-          </p>
+          </div>
         </div>
       </div>
       <div>

@@ -21,3 +21,9 @@
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
 }
+
+@media screen and (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+}

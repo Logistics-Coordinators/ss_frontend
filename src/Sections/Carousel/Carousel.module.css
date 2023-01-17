@@ -1,10 +1,20 @@
+.carouselHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  /* border: 2px solid red; */
+}
+
 .leftText {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 2rem;
-  width: 40%;
+  width: fit-content;
+  min-width: 13rem;
   color: #e84b01;
   /* border: 2px solid red; */
+  width: 40%;
 }
 
 .rightText {
@@ -15,4 +25,24 @@
   line-height: 2;
   color: black;
   /* border: 2px solid green; */
+}
+
+@media screen and (max-width: 768px) {
+  .carouselHeading {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .leftText {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .rightText {
+    text-align: center;
+    width: 100%;
+    font-size: 0.7rem;
+    margin-top: 2rem;
+  }
 }

@@ -33,7 +33,7 @@ function Explore() {
           ></iframe>
         </div>
       </div>
-      <div className={styles.exploreContent}>
+      {/* <div className={styles.exploreContent}>
         <p className={styles.exploreContentHeading}>Explore as you like</p>
         <p className={styles.exploreContentSubTitle}>
           Our suite of staffing services include temporary staffing,
@@ -41,7 +41,7 @@ function Explore() {
           solution. Additional services include payroll and managed staffing
           programs
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

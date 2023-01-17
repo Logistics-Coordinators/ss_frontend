@@ -13,7 +13,7 @@ function Footer() {
       style={{
         width: "100vw",
         height: "85vh",
-        // border: "2px solid red",
+        border: "2px solid red",
         backgroundColor: "#000",
         color: "white",
         position: "relative",
@@ -25,6 +25,7 @@ function Footer() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          flexWrap: "wrap",
           //   border: "2px solid green",
         }}
       >
