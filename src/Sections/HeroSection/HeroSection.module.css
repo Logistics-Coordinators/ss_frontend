@@ -90,11 +90,17 @@
 }
 
 @media screen and (max-width: 768px) {
+  .contentContainer {
+    margin-left: 1rem;
+  }
   .heading {
     font-size: 1.6rem;
   }
   .subHeading {
     font-size: 0.6rem;
+  }
+  .orangeLine {
+    margin-top: 2.5rem;
   }
 }
 
@@ -103,6 +109,5 @@
     font-size: 0.45rem;
   }
   .subHeading {
-    
   }
 }
