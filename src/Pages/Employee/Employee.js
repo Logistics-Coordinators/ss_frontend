@@ -9,7 +9,7 @@ import { FileUploader } from "react-drag-drop-files";
 
 import { positions } from "../../utils/positions";
 
-function Employee() {
+function Employee({setShowEmployeeForm}) {
   let navigate = useNavigate();
 
   const fileTypes = ["PDF", "DOCX"];
@@ -21,8 +21,16 @@ function Employee() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "white" }}>
-      <div
+    <div
+      style={{
+        height: "100vh",
+        backgroundColor: "rgb(35, 35, 35, 0.463)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {/* <div
         style={{
           height: "4rem",
           display: "flex",
@@ -39,7 +47,7 @@ function Employee() {
           }}
           alt="logo"
         />
-      </div>
+      </div> */}
       <div
         style={{
           display: "flex",
@@ -48,18 +56,34 @@ function Employee() {
         }}
       >
         <div className={styles.formContainer}>
-          <h2>EMPLOYEE FORM</h2>
+          <div
+            style={{
+              width: "100% ",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <h2 style={{ marginLeft: "2rem" }}>EMPLOYEE FORM</h2>
+            <span
+              class="material-symbols-outlined"
+              style={{ marginRight: "1rem" }}
+              onClick={() => setShowEmployeeForm(false)}
+            >
+              close
+            </span>
+          </div>
 
           <div className={styles.fieldsContainer}>
-            <div style={{ width: "15rem", margin: "0.2rem 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Name</p>
               <input placeholder="Ram Kumar" className={styles.inputField} />
             </div>
-            <div style={{ width: "15rem", margin: "0.2rem 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Phone</p>
               <input placeholder="65224944094" className={styles.inputField} />
             </div>
-            <div style={{ width: "15rem", margin: "0.2rem 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Email</p>
               <input
                 type="email"
@@ -67,25 +91,25 @@ function Employee() {
                 className={styles.inputField}
               />
             </div>
-            <div style={{ width: "80%", margin: "0.2rem 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Address</p>
               <input
                 placeholder="Flat no. 6, Second floor, Rohine Residency"
                 className={styles.inputField}
               />
             </div>
-            <div style={{ width: "15rem", margin: "0.2rem 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Landmark</p>
               <input
                 placeholder="Mid Town Road"
                 className={styles.inputField}
               />
             </div>
-            <div style={{ width: "15rem", margin: "0.2rem 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Pincode</p>
               <input placeholder="K1A 0B1" className={styles.inputField} />
             </div>
-            <div style={{ width: "15rem", margin: "0.2rem 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Post Applied For</p>
               <select className={styles.inputField}>
                 {positions.map((element) => {
@@ -101,13 +125,7 @@ function Employee() {
               </select>
             </div>
 
-            <div
-              style={{
-                width: "90%",
-                margin: "1.2rem 1.5rem",
-                // border: "2px solid white",
-              }}
-            >
+            <div className={styles.upload}>
               <p className={styles.label}>Upload CV</p>
               <div
                 style={{

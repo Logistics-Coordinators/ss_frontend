@@ -5,14 +5,22 @@ import styles from "./Company.module.css";
 
 import LabourConnect from "../../Assets/LabourConnect-whitebg.svg";
 
-function Company() {
+function Company({ setShowCompanyForm }) {
   let navigate = useNavigate();
 
   console.log(process.env.REACT_APP_BACKEND_URL);
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "white" }}>
-      <div
+    <div
+      style={{
+        height: "100vh",
+        backgroundColor: "rgb(35, 35, 35, 0.463)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {/* <div
         style={{
           height: "4rem",
           display: "flex",
@@ -29,7 +37,7 @@ function Company() {
           }}
           alt="logo"
         />
-      </div>
+      </div> */}
       <div
         style={{
           display: "flex",
@@ -38,18 +46,33 @@ function Company() {
         }}
       >
         <div className={styles.formContainer}>
-          <h2>COMPANY FORM</h2>
-
+          <div
+            style={{
+              width: "100% ",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <h2 style={{ marginLeft: "1rem" }}>COMPANY FORM</h2>
+            <span
+              class="material-symbols-outlined"
+              style={{ marginRight: "1rem" }}
+              onClick={() => setShowCompanyForm(false)}
+            >
+              close
+            </span>
+          </div>
           <div className={styles.fieldsContainer}>
-            <div style={{ width: "15rem", margin: "0 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Company name</p>
               <input placeholder="Ram Kumar" className={styles.inputField} />
             </div>
-            <div style={{ width: "15rem", margin: "0 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Company contact no</p>
               <input placeholder="65224944094" className={styles.inputField} />
             </div>
-            <div style={{ width: "15rem", margin: "0 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Email id</p>
               <input
                 type="email"
@@ -58,18 +81,18 @@ function Company() {
               />
             </div>
 
-            <div style={{ width: "15rem", margin: "0 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Available From</p>
               <input type="time" className={styles.inputField} />
             </div>
-            <div style={{ width: "15rem", margin: "0 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Available Till</p>
               <input type="time" className={styles.inputField} />
             </div>
-            <div style={{ width: "80%", margin: "0 1.5rem" }}>
+            <div className={styles.fields}>
               <p className={styles.label}>Comments</p>
               <textarea
-                style={{ resize: "none", width: "100%", height: "8rem" }}
+                style={{ resize: "none", width: "100%" }}
                 placeholder="Comments goes here"
                 className={styles.inputField}
               />

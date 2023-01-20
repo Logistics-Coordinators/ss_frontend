@@ -6,16 +6,23 @@
   justify-content: center;
   align-items: center;
   width: 60%;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   color: black;
   border-radius: 5px;
-  padding: 10px 0;
+  padding: 10px;
+  /* height: 100vh; */
+  /* overflow-y: scroll; */
 }
 
 .fieldsContainer {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.fields {
+  width: 15rem;
+  margin: 0.2rem 1.5rem;
 }
 
 .label {
@@ -36,4 +43,34 @@
   font-weight: bold;
   padding: 10px;
   background-color: white;
+}
+
+.upload {
+  width: 90%;
+  margin: 1.2rem 1.5rem;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1024px) {
+  .fields {
+    width: 7rem;
+    margin: 0 1rem;
+  }
+  /* .inputField {
+    height: 2.1rem;
+  } */
+  .upload {
+    margin: 1rem;
+    margin-top: 0rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .fields {
+    width: 4rem;
+    margin: 1.2rem;
+  }
+  .label {
+    font-size: 0.8rem;
+  }
 }

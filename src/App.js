@@ -14,8 +14,8 @@ function App() {
         {/* <Switch> */}
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/employee" element={<Employee />} />
-          <Route path="/company" element={<Company />} />
+          {/* <Route path="/employee" element={<Employee />} />
+          <Route path="/company" element={<Company />} /> */}
           <Route path="employeeform" element={<EmployeeApplication />} />
 
           {/* </Switch> */}
