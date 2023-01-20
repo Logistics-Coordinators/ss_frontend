@@ -1,16 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import styles from "./Employee.module.css";
 
-import LabourConnect from "../../Assets/LabourConnect-whitebg.svg";
 
 import { FileUploader } from "react-drag-drop-files";
 
 import { positions } from "../../utils/positions";
 
 function Employee({setShowEmployeeForm}) {
-  let navigate = useNavigate();
 
   const fileTypes = ["PDF", "DOCX"];
 

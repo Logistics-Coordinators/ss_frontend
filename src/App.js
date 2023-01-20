@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Imports
 import Landing from "./Pages/Landing/Landing";
-import Employee from "./Pages/Employee/Employee";
-import Company from "./Pages/Company/Company";
+// import Employee from "./Pages/Employee/Employee";
+// import Company from "./Pages/Company/Company";
 import EmployeeApplication from "./Pages/EmployeeApplication/EmployeeApplication";
 
 function App() {

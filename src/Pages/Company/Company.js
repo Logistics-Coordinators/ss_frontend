@@ -1,12 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 import styles from "./Company.module.css";
 
-import LabourConnect from "../../Assets/LabourConnect-whitebg.svg";
+// import LabourConnect from "../../Assets/LabourConnect-whitebg.svg";
 
 function Company({ setShowCompanyForm }) {
-  let navigate = useNavigate();
 
   console.log(process.env.REACT_APP_BACKEND_URL);
 

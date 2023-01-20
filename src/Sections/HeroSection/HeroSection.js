@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import "../../styles/Layout.css";
 import styles from "./HeroSection.module.css";
@@ -16,7 +15,6 @@ import Employee from "../../Pages/Employee/Employee";
 import Company from "../../Pages/Company/Company";
 
 function HeroSection() {
-  let navigate = useNavigate();
 
   const slideImages = [
     {
