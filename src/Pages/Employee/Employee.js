@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Form, Field } from "formik";
-import { Dropdown } from "semantic-ui-react";
+// import { Dropdown } from "semantic-ui-react";
 
 // Css Changing
 // import "semantic-ui-css/semantic.min.css";
@@ -17,7 +17,7 @@ import emailjs from "@emailjs/browser";
 function Employee({ setShowEmployeeForm }) {
   const fileTypes = ["PDF", "DOCX"];
 
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
 
   const publicKey = "c_NiGcQu2CKriPTsh";
   const templateID = "template_q6dptqa";
@@ -41,7 +41,7 @@ function Employee({ setShowEmployeeForm }) {
   };
 
   const handleFileChange = (uploadFile) => {
-    setFile(uploadFile);
+    // setFile(uploadFile);
   };
 
   return (
