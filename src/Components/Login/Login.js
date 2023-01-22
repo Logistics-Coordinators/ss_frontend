@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Formik, Form, Field } from "formik";
@@ -30,6 +30,7 @@ function Login() {
     if (!item) {
       setIsLoggedIn(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   setTimeout(() => {
@@ -52,7 +53,7 @@ function Login() {
         // localStorage.setItem("role", response.data.user.role);
         const item = localStorage.getItem("token", response.data.token);
         console.log(response);
-        if (response.data == "Too many requests, please try again later.") {
+        if (response.data === "Too many requests, please try again later.") {
           //   setModal(true);
           //   setMsg("Too many requests please try again...");
           //   setModalColor("red");
@@ -90,7 +91,7 @@ function Login() {
   return (
     <div className={styles.parentContainer}>
       <div className={styles.logoContainer}>
-        <img src={LabourConnect} width={180} draggable={false} />
+        <img src={LabourConnect} width={180} draggable={false} alt="logo" />
       </div>
       <Formik
         initialValues={{
