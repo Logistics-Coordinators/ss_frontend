@@ -45,6 +45,10 @@
   background-color: white;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 .upload {
   width: 90%;
   margin: 1.2rem 1.5rem;

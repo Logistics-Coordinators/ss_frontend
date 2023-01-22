@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import styles from "./Navbar.module.css";
 
-import LabourConnect from "../../Assets/LabourConnect-blackbg.jpg";
+import LabourConnect from "../../Assets/LabourConnect-transparent.png";
 
 function Navbar() {
   let navigate = useNavigate();
@@ -16,7 +16,7 @@ function Navbar() {
           width={150}
           draggable={false}
           alt="logo"
-          // style={{ marginLeft: "3.5rem" }}
+          style={{ margin: "0.5rem" }}
         />
       </div>
 
@@ -32,11 +32,14 @@ function Navbar() {
         >
           <span className={styles.link}>Our Service</span>
         </a>
-        <span className={styles.link}>
-          <p onClick={() => navigate("/employeeform")}>
+        {/* <span className={styles.link}>
+          <p onClick={() => navigate("/login")}>
             <span className={styles.link}>Login</span>
           </p>
-        </span>
+        </span> */}
+        <button className={styles.buttonMed} onClick={() => navigate("/login")}>
+          Login
+        </button>
       </div>
     </div>
   );

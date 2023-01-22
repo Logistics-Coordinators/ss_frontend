@@ -1,27 +1,48 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { UserContext } from "./Context/UserContext.js";
 
 // Imports
 import Landing from "./Pages/Landing/Landing";
+import Login from "./Components/Login/Login";
 // import Employee from "./Pages/Employee/Employee";
 // import Company from "./Pages/Company/Company";
 import EmployeeApplication from "./Pages/EmployeeApplication/EmployeeApplication";
 
 function App() {
-  return (
-    <React.StrictMode>
-      <Router>
-        {/* <Switch> */}
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          {/* <Route path="/employee" element={<Employee />} />
-          <Route path="/company" element={<Company />} /> */}
-          <Route path="employeeform" element={<EmployeeApplication />} />
+  const [user, setUser] = useState(""); // For getting user details
+  const [isLoggedIn, setIsLoggedIn] = useState(null); //For knowing whether user is loggedin
+  const [role, setRole] = useState(""); //For passing the role of the user
 
-          {/* </Switch> */}
-        </Routes>
-      </Router>
-    </React.StrictMode>
+  const value = useMemo(
+    () => ({
+      isLoggedIn,
+      setIsLoggedIn,
+      role,
+      setRole,
+      user,
+      setUser,
+    }),
+    [isLoggedIn, setIsLoggedIn, role, setRole, user, setUser]
+  );
+
+  return (
+    <UserContext.Provider value={value}>
+      <React.StrictMode>
+        <Router>
+          {/* <Switch> */}
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            {/* <Route path="/employee" element={<Employee />} />
+          <Route path="/company" element={<Company />} /> */}
+            <Route path="employeeform" element={<EmployeeApplication />} />
+            <Route path="/login" element={<Login />} />
+            {/* </Switch> */}
+          </Routes>
+        </Router>
+      </React.StrictMode>
+    </UserContext.Provider>
   );
 }
 

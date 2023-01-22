@@ -25,3 +25,24 @@
   border-radius: 1.5rem;
   padding: 2px;
 }
+
+.buttonMed {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 15px;
+  width: 6rem;
+  border-radius: 6px;
+  font-family: "Montserrat", sans-serif;
+  /* text-transform: uppercase; */
+  font-weight: 400;
+  font-size: 0.9rem;
+  background: #ff003d;
+  color: white;
+  border: none;
+}
+
+.buttonMed:hover {
+  cursor: pointer;
+}

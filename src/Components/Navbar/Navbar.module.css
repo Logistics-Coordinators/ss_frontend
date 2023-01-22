@@ -22,6 +22,29 @@
   text-transform: uppercase;
 }
 
+.buttonMed {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 50px;
+  width: 8rem;
+  border-radius: 6px;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.9rem;
+  background: #e84b01;
+  color: white;
+  border: none;
+}
+
+.buttonMed:hover {
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid #e84b01;
+}
+
 @media screen and (max-width: 768px) {
   .navLinks {
     display: none;

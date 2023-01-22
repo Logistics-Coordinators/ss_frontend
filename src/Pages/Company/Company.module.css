@@ -45,6 +45,10 @@
   background-color: white;
 }
 
+.button:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1024px) {
   .fields {
     width: 7rem;

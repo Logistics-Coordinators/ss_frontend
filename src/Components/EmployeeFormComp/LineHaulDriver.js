@@ -11,24 +11,7 @@ function LineHaulDriver() {
   return (
     <div>
       <Formik
-        initialValues={{
-          time: "",
-          dateOfBirth: "",
-          azDuration: "",
-          azDurationON: "",
-          position: "",
-          applicationDate: "",
-          accidentRecord1: "",
-          accidentRecord2: "",
-          accidentRecord3: "",
-          addressLine1: "",
-          addressLine2: "",
-          city: "",
-          licenseDenail: "",
-          licenseDenialReason: "",
-          licenseSuspension: "",
-          licenseSuspensionReason: "",
-        }}
+        initialValues={{}}
         onSubmit={(val, actions) => handleLineHaulSubmit(val, actions)}
       >
         {({
@@ -46,80 +29,67 @@ function LineHaulDriver() {
                 {/* Left Section */}
                 <div className={styles.generalLeft}>
                   <div className={styles.container}>
-                    <div className={styles.label}>
-                      How long at current address ?
-                    </div>
+                    <div className={styles.label}>Social Insurance Number</div>
                     <Field
-                      className={styles.inputFieldSmall}
-                      name="time"
-                      placeholder="Time"
+                      className={styles.inputFieldLarge}
+                      // name="time"
+                      placeholder="Your Insurance number"
                     />
                   </div>
-
                   <div className={styles.container}>
-                    <div className={styles.label}>Date of birth</div>
+                    <div className={styles.label}>Alternative number</div>
                     <Field
-                      className={styles.inputFieldSmall}
-                      name="dateOfBirth"
-                      type="date"
+                      className={styles.inputFieldLarge}
+                      // name="time"
+                      placeholder="Your alternative number"
                     />
                   </div>
 
                   <div className={styles.container}>
                     <div className={styles.label}>
-                      How long have you held a AZ license?
+                      Emergency contact person name
                     </div>
                     <Field
                       className={styles.inputFieldLarge}
-                      name="azDuration"
-                      placeholder="time"
+                      // name="azDuration"
+                      placeholder="Number of Emergency person "
                     />
                   </div>
 
                   <div className={styles.container}>
-                    <div className={styles.label}>Applied For</div>
+                    <div className={styles.label}>
+                      Emergency contact person number
+                    </div>
                     <Field
-                      className={styles.inputFieldSmall}
-                      name="position"
-                      placeholder="Position"
-                    />
-                  </div>
-                  <div className={styles.container}>
-                    <div className={styles.label}>Application Date</div>
-                    <Field
-                      className={styles.inputFieldSmall}
-                      name="applicationDate"
-                      type="date"
+                      className={styles.inputFieldLarge}
+                      // name="position"
+                      placeholder="Number of Emergency person "
                     />
                   </div>
                   <div className={styles.container}>
                     <div className={styles.label}>
-                      How long have you held a AZ license in ON?
+                      Emergency contact person relationship
                     </div>
                     <Field
                       className={styles.inputFieldLarge}
-                      name="azDurationON"
-                      placeholder="time"
+                      // name="applicationDate"
+                      placeholder="Relationships of the emergency person"
                     />
                   </div>
                   <div className={styles.container}>
-                    <div className={styles.label}>
-                      Accident record of past 3 years
-                    </div>
+                    <div className={styles.label}>Referred person name</div>
                     <Field
                       className={styles.inputFieldLarge}
-                      name="accidentRecord1"
-                      placeholder="1st year"
+                      // name="azDurationON"
+                      placeholder="Enter referred person name"
                     />
+                  </div>
+                  <div className={styles.container}>
+                    <div className={styles.label}>Rate of pay</div>
                     <Field
                       className={styles.inputFieldLarge}
-                      name="accidentRecord2"
-                      placeholder="2nd year"
-                    />
-                    <Field
-                      className={styles.inputFieldLarge}
-                      name="accidentRecord3"
-                      placeholder="3rdyear"
+                      // name="accidentRecord1"
+                      placeholder="Enter your pay"
                     />
                   </div>
                 </div>
@@ -128,87 +98,82 @@ function LineHaulDriver() {
                 <div className={styles.generalRight}>
                   <div className={styles.container}>
                     <div className={styles.label}>
-                      Traffic convictions and forfeitures of past three years
+                      Accident record of past 3 years
                     </div>
                     <Field
                       className={styles.inputFieldLarge}
-                      name="addressLine1"
-                      placeholder="Address line 1"
+                      // name="addressLine1"
+                      placeholder="1st year"
                     />
                     <Field
                       className={styles.inputFieldLarge}
-                      name="addressLine2"
-                      placeholder="Address line 2"
+                      // name="addressLine2"
+                      placeholder="2nd Year"
                     />
                     <Field
                       className={styles.inputFieldLarge}
-                      name="city"
-                      placeholder="City"
+                      // name="city"
+                      placeholder="3rd Year"
                     />
                   </div>
 
-                  <div className={styles.containerSelect}>
-                    <div className={styles.labelSelect} id="licenseDenial">
-                      Have you been denied a license ?
+                  <div className={styles.container}>
+                    <div className={styles.label}>
+                      Previous bonding company name
                     </div>
-                    <div
-                      role="group"
-                      aria-labelledby="licenseDenial"
-                      className={styles.radioContainer}
-                    >
-                      <label>
-                        <Field type="radio" name="licenseDenail" value="Yes" />
-                        Yes
-                      </label>
-                      <label>
-                        <Field type="radio" name="licenseDenail" value="No" />
-                        No
-                      </label>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      // name="accidentRecord1"
+                      placeholder="Name of your previous bonding company "
+                    />
+                  </div>
+
+                  <div className={styles.container}>
+                    <div className={styles.label}>
+                      Have you ever convicted felony
                     </div>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      // name="accidentRecord1"
+                      placeholder=""
+                    />
                   </div>
 
                   <div className={styles.container}>
                     <div className={styles.label}>If yes state the reason</div>
                     <Field
                       className={styles.inputFieldLarge}
-                      name="licenseDenialReason"
+                      // name="licenseDenialReason"
                       placeholder="State the reason"
                     />
                   </div>
 
-                  <div className={styles.containerSelect}>
-                    <div className={styles.labelSelect} id="licenseSuspension">
-                      Have your license ever been suspended or revoked ?
+                  <div className={styles.container}>
+                    <div className={styles.label}>
+                      Is there any reason you might to unable to perform a job
+                      (If yes please specific)
                     </div>
-                    <div
-                      role="group"
-                      aria-labelledby="licenseSuspension"
-                      className={styles.radioContainer}
-                    >
-                      <label>
-                        <Field
-                          type="radio"
-                          name="licenseSuspension"
-                          value="Yes"
-                        />
-                        Yes
-                      </label>
-                      <label>
-                        <Field
-                          type="radio"
-                          name="licenseSuspension"
-                          value="No"
-                        />
-                        No
-                      </label>
-                    </div>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      // name="accidentRecord1"
+                      placeholder=""
+                    />
                   </div>
 
                   <div className={styles.container}>
                     <div className={styles.label}>If yes state the reason</div>
                     <Field
                       className={styles.inputFieldLarge}
-                      name="licenseSuspensionReason"
+                      // name="licenseDenialReason"
+                      placeholder="State the reason"
+                    />
+                  </div>
+
+                  <div className={styles.container}>
+                    <div className={styles.label}>If yes state the reason</div>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      // name="licenseSuspensionReason"
                       placeholder="State the reason"
                     />
                   </div>

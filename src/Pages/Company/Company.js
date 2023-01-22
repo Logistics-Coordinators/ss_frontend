@@ -1,12 +1,33 @@
 import React from "react";
+import { Formik, Form, Field } from "formik";
 
 import styles from "./Company.module.css";
+
+import emailjs from "@emailjs/browser";
 
 // import LabourConnect from "../../Assets/LabourConnect-whitebg.svg";
 
 function Company({ setShowCompanyForm }) {
+  // console.log(process.env.REACT_APP_BACKEND_URL);
+  const publicKey = "c_NiGcQu2CKriPTsh";
+  const templateID = "template_h88qdbm";
+  const serviceID = "service_lv1w9m5";
 
-  console.log(process.env.REACT_APP_BACKEND_URL);
+  const handleCompanyFormSubmit = (val, resetForm) => {
+    // e.preventDefault();
+    console.log(val);
+    emailjs.send(serviceID, templateID, val, publicKey).then(
+      (response) => {
+        console.log("SUCCESS", response);
+        resetForm();
+        setShowCompanyForm(false);
+        alert("Your Application has been recieved.");
+      },
+      (error) => {
+        console.log("FAILED");
+      }
+    );
+  };
 
   return (
     <div
@@ -18,24 +39,6 @@ function Company({ setShowCompanyForm }) {
         alignItems: "center",
       }}
     >
-      {/* <div
-        style={{
-          height: "4rem",
-          display: "flex",
-          justifyContent: "center",
-          backgroundColor: "white",
-        }}
-      >
-        <img
-          src={LabourConnect}
-          draggable={false}
-          width={130}
-          onClick={() => {
-            navigate("/");
-          }}
-          alt="logo"
-        />
-      </div> */}
       <div
         style={{
           display: "flex",
@@ -43,64 +46,111 @@ function Company({ setShowCompanyForm }) {
           alignItems: "center",
         }}
       >
-        <div className={styles.formContainer}>
-          <div
-            style={{
-              width: "100% ",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <h2 style={{ marginLeft: "1rem" }}>COMPANY FORM</h2>
-            <span
-              class="material-symbols-outlined"
-              style={{ marginRight: "1rem" }}
-              onClick={() => setShowCompanyForm(false)}
-            >
-              close
-            </span>
-          </div>
-          <div className={styles.fieldsContainer}>
-            <div className={styles.fields}>
-              <p className={styles.label}>Company name</p>
-              <input placeholder="Ram Kumar" className={styles.inputField} />
-            </div>
-            <div className={styles.fields}>
-              <p className={styles.label}>Company contact no</p>
-              <input placeholder="65224944094" className={styles.inputField} />
-            </div>
-            <div className={styles.fields}>
-              <p className={styles.label}>Email id</p>
-              <input
-                type="email"
-                placeholder="random@gmail.com"
-                className={styles.inputField}
-              />
-            </div>
+        <Formik
+          initialValues={{
+            companyName: "",
+            companyContactName: "",
+            contactNumber: "",
+            email: "",
+            availableFrom: "",
+            availableTill: "",
+            comments: "",
+          }}
+          onSubmit={(val, { resetForm }) =>
+            handleCompanyFormSubmit(val, resetForm)
+          }
+        >
+          {({ values }) => (
+            <div className={styles.formContainer}>
+              <Form>
+                <div
+                  style={{
+                    width: "100% ",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <h2 style={{ marginLeft: "1rem" }}>COMPANY FORM</h2>
+                  <span
+                    className="material-symbols-outlined"
+                    style={{ marginRight: "1rem" }}
+                    onClick={() => setShowCompanyForm(false)}
+                  >
+                    close
+                  </span>
+                </div>
+                <div className={styles.fieldsContainer}>
+                  <div className={styles.fields}>
+                    <p className={styles.label}>Company Name</p>
+                    <Field
+                      className={styles.inputField}
+                      name="companyName"
+                      placeholder="Amazon"
+                    />
+                  </div>
+                  <div className={styles.fields}>
+                    <p className={styles.label}>Company Contact</p>
+                    <Field
+                      className={styles.inputField}
+                      name="companyContactName"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div className={styles.fields}>
+                    <p className={styles.label}>Contact Number</p>
+                    <Field
+                      className={styles.inputField}
+                      name="contactNumber"
+                      placeholder="888-856-2352"
+                      type="number"
+                    />
+                  </div>
+                  <div className={styles.fields}>
+                    <p className={styles.label}>Email id</p>
+                    <Field
+                      className={styles.inputField}
+                      name="email"
+                      placeholder="info@labour-connect.com"
+                      type="email"
+                    />
+                  </div>
 
-            <div className={styles.fields}>
-              <p className={styles.label}>Available From</p>
-              <input type="time" className={styles.inputField} />
-            </div>
-            <div className={styles.fields}>
-              <p className={styles.label}>Available Till</p>
-              <input type="time" className={styles.inputField} />
-            </div>
-            <div className={styles.fields}>
-              <p className={styles.label}>Comments</p>
-              <textarea
-                style={{ resize: "none", width: "100%" }}
-                placeholder="Comments goes here"
-                className={styles.inputField}
-              />
-            </div>
-          </div>
+                  <div className={styles.fields}>
+                    <p className={styles.label}>Available From</p>
+                    <Field
+                      className={styles.inputField}
+                      name="availableFrom"
+                      type="time"
+                    />
+                  </div>
+                  <div className={styles.fields}>
+                    <p className={styles.label}>Available Till</p>
+                    <Field
+                      className={styles.inputField}
+                      name="availableTill"
+                      type="time"
+                    />
+                  </div>
+                  <div className={styles.fields}>
+                    <p className={styles.label}>Comments</p>
+                    <Field
+                      className={styles.inputField}
+                      name="comments"
+                      placeholder="Comments goes here"
+                    />
+                  </div>
+                </div>
 
-          <div style={{ width: "10rem", marginTop: "3rem" }}>
-            <button className={styles.button}>SUBMIT</button>
-          </div>
-        </div>
+                <div style={{ width: "10rem", marginTop: "3rem" }}>
+                  <button className={styles.button} type="submit">
+                    SUBMIT
+                  </button>
+                </div>
+              </Form>
+            </div>
+          )}
+        </Formik>
       </div>
     </div>
   );

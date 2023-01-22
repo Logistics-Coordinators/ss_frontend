@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import LClogo from "../../Assets/LabourConnect-whitebg.svg";
 
 import "../../styles/Layout.css";
@@ -12,14 +13,34 @@ import EmploymentRecord from "../../Components/EmployeeFormComp/EmploymentRecord
 function EmployeeApplication() {
   const track = [
     "General Information",
-    "New linehaul driver information",
+    "Driver Information",
     "Employment Record",
-    "Upload License",
+    "Driver Experience",
+    "Upload Documents",
     "On Duty Hours",
+    "Terms and Conditions",
   ];
 
   const [formCompletionStatus] = useState(0);
   const [currentUserFormStatus, setCurrentUserFormStatus] = useState(1);
+
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    const item = localStorage.getItem("token");
+    if (!item) {
+      navigate("/login");
+    }
+  }, []);
+
+  const handleLogout = () => {
+    const item = localStorage.getItem("token");
+
+    if (item) {
+      localStorage.removeItem("token");
+      navigate("/login");
+    }
+  };
 
   return (
     <div>
@@ -28,15 +49,23 @@ function EmployeeApplication() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          position: "relative",
         }}
       >
         <img
           src={LClogo}
-          width={130}
+          width={140}
           style={{ marginTop: "1rem" }}
           draggable={false}
           alt="logo"
         />
+        <button
+          className={styles.buttonMed}
+          style={{ position: "absolute", right: "5rem" }}
+          onClick={() => handleLogout()}
+        >
+          Logout
+        </button>
       </div>
       <div className="layoutContainer">
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -95,8 +124,12 @@ function EmployeeApplication() {
                 <EmploymentRecord />
               </div>
             ) : null}
-            {currentUserFormStatus === 4 ? <div>Upload License</div> : null}
-            {currentUserFormStatus === 5 ? <div>On Duty Hours</div> : null}
+            {currentUserFormStatus === 4 ? <div>Driver Experience</div> : null}
+            {currentUserFormStatus === 5 ? <div>Upload Documents</div> : null}
+            {currentUserFormStatus === 6 ? <div>On Duty Hours</div> : null}
+            {currentUserFormStatus === 7 ? (
+              <div>Terms and Conditions</div>
+            ) : null}
           </div>
         </div>
       </div>
