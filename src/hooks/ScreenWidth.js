@@ -22,6 +22,7 @@ export default function useMediaQuery(width) {
     }
 
     return () => media.removeListener(updateTarget);
+    // eslint-disable-next-line
   }, []);
 
   return targetReached;
