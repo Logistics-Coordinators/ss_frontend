@@ -15,10 +15,6 @@ function Navbar() {
 
   const isBreakpoint = useMediaQuery(768);
 
-  const handleHamLinkClick = (link) => {
-    setIsFocused(false);
-  };
-
   return (
     <div className={styles.navbarContainer}>
       <div className={styles.logo}>
