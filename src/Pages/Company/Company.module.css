@@ -1,48 +1,51 @@
 .formContainer {
   font-family: "Poppins", sans-serif;
   background-color: #e84b01;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  /* margin-top: 2rem; */
+  /* width: 60%; */
   color: black;
   border-radius: 5px;
   padding: 10px;
-  /* height: 100vh; */
-  /* overflow-y: scroll; */
+  max-height: 80vh;
+  max-width: 60vw;
+  overflow: auto;
+  /* margin: 0 1rem; */
+}
+
+.headingContainer {
+  margin: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .fieldsContainer {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
 
 .fields {
-  width: 15rem;
-  margin: 0.2rem 1.5rem;
+  margin: 0.5rem 0.8rem;
+  /* border: 2px solid black; */
 }
 
 .label {
-  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
 }
 
 .inputField {
-  width: 100%;
-  border-radius: 3px;
-  height: 2.3rem;
-  padding: 0 10px;
+  font-weight: bold;
+  outline: none;
+  padding: 15px 20px;
 }
 
 .button {
-  width: 100%;
   font-family: "Poppins", sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  padding: 10px;
+  padding: 5px 20px;
   background-color: white;
+  margin: 1.5rem;
+  margin-left: 1rem;
 }
 
 .button:hover {
@@ -51,24 +54,26 @@
 
 @media screen and (max-width: 1024px) {
   .fields {
-    width: 7rem;
-    margin: 0 1rem;
+    margin: 0.2rem 0.5rem;
   }
-  /* .inputField {
-    height: 2.1rem;
-  } */
-  .upload {
-    margin: 1rem;
-    margin-top: 0rem;
+
+  .inputField {
+    padding: 8px 15px;
+  }
+
+  .label {
+    font-size: 1rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .fields {
-    width: 4rem;
-    margin: 1.2rem;
+  .headingContainer {
+    margin: 0;
+    font-size: 0.7rem;
   }
-  .label {
-    font-size: 0.8rem;
+
+  .fields {
+    margin: 0.1rem;
+    overflow: hidden;
   }
 }

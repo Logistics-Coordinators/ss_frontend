@@ -33,6 +33,7 @@ function Company({ setShowCompanyForm }) {
     <div
       style={{
         height: "100vh",
+        width: "100vw",
         backgroundColor: "rgb(35, 35, 35, 0.463)",
         display: "flex",
         justifyContent: "center",
@@ -40,11 +41,11 @@ function Company({ setShowCompanyForm }) {
       }}
     >
       <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+      // style={{
+      //   display: "flex",
+      //   justifyContent: "center",
+      //   alignItems: "center",
+      // }}
       >
         <Formik
           initialValues={{
@@ -61,20 +62,12 @@ function Company({ setShowCompanyForm }) {
           }
         >
           {({ values }) => (
-            <div className={styles.formContainer}>
-              <Form>
-                <div
-                  style={{
-                    width: "100% ",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <h2 style={{ marginLeft: "1rem" }}>COMPANY FORM</h2>
+            <Form>
+              <div className={styles.formContainer}>
+                <div className={styles.headingContainer}>
+                  <h2 className={styles.heading}>COMPANY FORM</h2>
                   <span
                     className="material-symbols-outlined"
-                    style={{ marginRight: "1rem" }}
                     onClick={() => setShowCompanyForm(false)}
                   >
                     close
@@ -142,13 +135,13 @@ function Company({ setShowCompanyForm }) {
                   </div>
                 </div>
 
-                <div style={{ width: "10rem", marginTop: "3rem" }}>
+                <div>
                   <button className={styles.button} type="submit">
                     SUBMIT
                   </button>
                 </div>
-              </Form>
-            </div>
+              </div>
+            </Form>
           )}
         </Formik>
       </div>

@@ -14,6 +14,16 @@ textarea {
 }
 
 .lkjDVC {
+  border-radius: 3px !important;
   border: none !important;
-  max-width: 100% !important;
+  /* max-width: 100% !important; */
+  background-color: white !important;
+  padding: 2px !important;
+}
+
+@media screen and (max-width: 425px) {
+  .lkjDVC {
+    padding: 0px !important;
+    width: 50% !important;
+  }
 }

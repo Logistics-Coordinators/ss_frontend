@@ -48,6 +48,7 @@ function Employee({ setShowEmployeeForm }) {
     <div
       style={{
         height: "100vh",
+        width: "100vw",
         backgroundColor: "rgb(35, 35, 35, 0.463)",
         display: "flex",
         justifyContent: "center",
@@ -77,18 +78,10 @@ function Employee({ setShowEmployeeForm }) {
           {({ values, setFieldValue }) => (
             <div className={styles.formContainer}>
               <Form>
-                <div
-                  style={{
-                    width: "100% ",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <h2 style={{ marginLeft: "2rem" }}>EMPLOYEE FORM</h2>
+                <div className={styles.headingContainer}>
+                  <h2 className={styles.heading}>EMPLOYEE FORM</h2>
                   <span
                     class="material-symbols-outlined"
-                    style={{ marginRight: "1rem" }}
                     onClick={() => setShowEmployeeForm(false)}
                   >
                     close
@@ -182,35 +175,15 @@ function Employee({ setShowEmployeeForm }) {
                         );
                       })}
                     </select>
-                    {/* <Dropdown
-                      selection
-                      placeholder="Position"
-                      options={positions.map((ele) => ({
-                        value: Object.keys(ele)[0],
-                        text: Object.values(ele)[0],
-                      }))}
-                      value={values.empPosition}
-                      onChange={(_, { value }) =>
-                        setFieldValue("empPosition", value)
-                      }
-                    /> */}
                   </div>
 
-                  <div className={styles.upload}>
+                  <div className={styles.fields}>
                     <p className={styles.label}>Upload CV/Resume</p>
-                    <div
-                      style={{
-                        backgroundColor: "white",
-                        borderRadius: "3px",
-                        // display: "flex",
-                        // justifyContent: "space-around",
-                      }}
-                    >
+                    <div className={styles.upload}>
                       <FileUploader
                         handleFileChange={handleFileChange}
                         name="file"
                         types={fileTypes}
-                        className={styles.inputField}
                         multiple={false}
                         onTypeError={(err) => console.log(err)}
                         maxSize={5}
