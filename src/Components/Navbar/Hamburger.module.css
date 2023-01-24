@@ -1,0 +1,29 @@
+.bar {
+  width: 15px;
+  margin: 2px;
+  border: 0.1px solid white;
+  /* background: rgba(11, 11, 11, 0.463); */
+  background: white;
+}
+
+.ham {
+  font-size: 16px;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.25s ease-in-out;
+  margin-right: 1rem;
+}
+
+/* .ham:hover{
+    
+} */

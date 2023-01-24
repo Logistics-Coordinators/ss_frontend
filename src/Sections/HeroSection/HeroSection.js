@@ -11,11 +11,10 @@ import slide3 from "../../Assets/slideshow/slide3.jpg";
 import slide4 from "../../Assets/slideshow/slide4.jpg";
 import slide5 from "../../Assets/slideshow/slide5.jpg";
 
-import Employee from "../../Pages/Employee/Employee";
-import Company from "../../Pages/Company/Company";
+import Employee from "../../Components/Employee/Employee";
+import Company from "../../Components/Company/Company";
 
 function HeroSection() {
-
   const slideImages = [
     {
       url: slide1,
