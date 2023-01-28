@@ -69,7 +69,6 @@ function DriverExperience() {
           experienceAndQualification: "",
           statesOperated: "",
           typeOfEquipment: [],
-          experienceAndQualification: "",
           instituteName: "",
           instituteLocation: "",
           duration: "",
@@ -242,7 +241,7 @@ function DriverExperience() {
               </div>
 
               <div className={styles.generalRight}>
-                {values.driverExperience == "Yes" ? (
+                {values.driverExperience === "Yes" ? (
                   <>
                     <div
                       className={styles.checkBoxContainer}
@@ -343,7 +342,7 @@ function DriverExperience() {
                   </div>
                 </div>
 
-                {values.experienceAndQualification == "Yes" ? (
+                {values.experienceAndQualification === "Yes" ? (
                   <div style={{ position: "relative" }}>
                     <div>
                       {qualificationHistory.map((qly, index) => (

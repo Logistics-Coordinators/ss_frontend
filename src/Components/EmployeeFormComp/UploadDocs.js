@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Form } from "formik";
-import { useDropzone } from "react-dropzone";
 
 import styles from "./FormComp.module.css";
 
