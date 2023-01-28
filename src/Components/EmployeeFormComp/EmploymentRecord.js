@@ -15,9 +15,18 @@ function EmploymentRecord() {
   const [empHistory, setEmpHistory] = useState([]);
 
   const resetEmpForm = (values) => {
-    values.currAddress = "";
-    values.dateOfBirth = "";
-    values.azDuration = "";
+    values.empName = "";
+    values.positionHeld = "";
+    values.startDate = "";
+    values.endDate = "";
+    values.workCity = "";
+    values.postalCode = "";
+    values.wage = "";
+    values.contactPersonName = "";
+    values.contactPersonNumber = "";
+    values.reasonForLeaving = "";
+    values.subjectToFMCSR = "";
+    values.safeSensitiveFunction = "";
 
     setShowInputEmploymentHistory(false);
   };
@@ -29,9 +38,18 @@ function EmploymentRecord() {
     setEmpHistory((prev) => [
       ...prev,
       {
-        currAddress: values.currAddress,
-        dateOfBirth: values.dateOfBirth,
-        azDuration: values.azDuration,
+        empName: values.empName,
+        positionHeld: values.positionHeld,
+        startDate: values.startDate,
+        endDate: values.endDate,
+        workCity: values.workCity,
+        postalCode: values.postalCode,
+        wage: values.wage,
+        contactPersonName: values.contactPersonName,
+        contactPersonNumber: values.contactPersonNumber,
+        reasonForLeaving: values.reasonForLeaving,
+        subjectToFMCSR: values.subjectToFMCSR,
+        safeSensitiveFunction: values.safeSensitiveFunction,
       },
     ]);
     resetEmpForm(values);
@@ -41,7 +59,9 @@ function EmploymentRecord() {
   function handleEmpEntryDelete(id) {
     empHistory.length === 1
       ? alert("Must have atleast one Employment Entry!!")
-      : setEmpHistory((current) => current.filter((ele, index) => index !== id));
+      : setEmpHistory((current) =>
+          current.filter((ele, index) => index !== id)
+        );
   }
 
   // Function to Cancel filled education form
@@ -60,9 +80,18 @@ function EmploymentRecord() {
     <div>
       <Formik
         initialValues={{
-          currAddress: "",
-          dateOfBirth: "",
-          azDuration: "",
+          empName: "",
+          positionHeld: "",
+          startDate: "",
+          endDate: "",
+          workCity: "",
+          postalCode: "",
+          wage: "",
+          contactPersonName: "",
+          contactPersonNumber: "",
+          reasonForLeaving: "",
+          subjectToFMCSR: "",
+          safeSensitiveFunction: "",
         }}
         onSubmit={(val, actions) => handleEmploymentRecordSubmit(val, actions)}
       >

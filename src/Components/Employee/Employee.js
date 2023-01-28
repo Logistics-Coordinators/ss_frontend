@@ -8,24 +8,17 @@ import "semantic-ui-css/components/dropdown.min.css";
 
 import styles from "./Employee.module.css";
 
-import { FileUploader } from "react-drag-drop-files";
 
 import { positions } from "../../utils/positions";
 
 import emailjs from "@emailjs/browser";
 
 function Employee({ setShowEmployeeForm }) {
-  const fileTypes = ["PDF", "DOCX"];
-
-  // const [file, setFile] = useState(null);
-
   const publicKey = "c_NiGcQu2CKriPTsh";
   const templateID = "template_q6dptqa";
   const serviceID = "service_lv1w9m5";
 
   const handleEmpFormSubmit = (val, resetForm) => {
-    // e.preventDefault();
-    // console.log(val);
     emailjs.send(serviceID, templateID, val, publicKey).then(
       (response) => {
         console.log("SUCCESS", response);
@@ -38,10 +31,6 @@ function Employee({ setShowEmployeeForm }) {
         console.log("FAILED");
       }
     );
-  };
-
-  const handleFileChange = (uploadFile) => {
-    // setFile(uploadFile);
   };
 
   return (
@@ -72,6 +61,7 @@ function Employee({ setShowEmployeeForm }) {
             empPincode: "",
             empProvince: "",
             empPosition: "",
+            employeeCV: "",
           }}
           onSubmit={(val, { resetForm }) => handleEmpFormSubmit(val, resetForm)}
         >
@@ -119,11 +109,11 @@ function Employee({ setShowEmployeeForm }) {
                     />
                   </div>
                   <div className={styles.fields}>
-                    <p className={styles.label}>Address</p>
+                    <p className={styles.label}>Street</p>
                     <Field
                       className={styles.inputField}
                       name="empAddress"
-                      placeholder="Flat no. 6, Second floor, Rohine Residency"
+                      placeholder="596 Roger Street"
                       required
                     />
                   </div>
@@ -180,14 +170,16 @@ function Employee({ setShowEmployeeForm }) {
                   <div className={styles.fields}>
                     <p className={styles.label}>Upload CV/Resume</p>
                     <div className={styles.upload}>
-                      <FileUploader
-                        handleFileChange={handleFileChange}
-                        name="file"
-                        types={fileTypes}
-                        multiple={false}
-                        onTypeError={(err) => console.log(err)}
-                        maxSize={5}
-                        required
+                      <input
+                        id="employeeCV"
+                        name="employeeCV"
+                        type="file"
+                        onChange={(event) => {
+                          setFieldValue(
+                            "employeeCV",
+                            event.currentTarget.files[0]
+                          );
+                        }}
                       />
                     </div>
                   </div>

@@ -92,7 +92,7 @@ function HeroSection() {
                   className={styles.button}
                   onClick={() => setShowCompanyForm(true)}
                 >
-                  COMPANIES START HERE
+                  COMPANY START HERE
                 </button>
               </div>
             </div>

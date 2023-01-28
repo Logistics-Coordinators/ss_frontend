@@ -73,7 +73,7 @@ function GeneralInfo() {
       : setShowInputEducationHistory(true);
 
     setShowSectionOne(false);
-  };
+  };  
 
   return (
     <div>
@@ -89,14 +89,14 @@ function GeneralInfo() {
           city: "",
           zip: "",
           phone: "",
-          azDuration: "",
-          azDurationON: "",
+          dateOfBirth: "",
           empDate: "",
           totalMiles: "",
           majorCity: "",
           bondRefusal: "",
           crossBorders: "",
-          domtarBan: "",
+          ban: "",
+          banCompany: "",
           eduYear: "",
           eduLevel: "",
           eduInstitution: "",
@@ -204,23 +204,11 @@ function GeneralInfo() {
                       className={styles.generalRight}
                     >
                       <div className={styles.container}>
-                        <div className={styles.label}>
-                          How long have you held a AZ license
-                        </div>
+                        <div className={styles.label}>Date of Birth</div>
                         <Field
                           className={styles.inputFieldLarge}
-                          name="azDuration"
-                          placeholder="Duration"
-                        />
-                      </div>
-                      <div className={styles.container}>
-                        <div className={styles.label}>
-                          How long have you held a AZ license in ON
-                        </div>
-                        <Field
-                          className={styles.inputFieldLarge}
-                          name="azDurationON"
-                          placeholder="Duration"
+                          name="dateOfBirth"
+                          type="date"
                         />
                       </div>
                       <div className={styles.container}>
@@ -303,24 +291,37 @@ function GeneralInfo() {
                       </div>
 
                       <div className={styles.containerSelect}>
-                        <div className={styles.labelSelect} id="domtarBan">
-                          Have you ever been banned by Domtar Companies?
+                        <div className={styles.labelSelect} id="ban">
+                          Have you ever been banned by any Companies?
                         </div>
                         <div
                           role="group"
-                          aria-labelledby="domtarBan"
+                          aria-labelledby="ban"
                           className={styles.radioContainer}
                         >
                           <label>
-                            <Field type="radio" name="domtarBan" value="Yes" />
+                            <Field type="radio" name="ban" value="Yes" />
                             Yes
                           </label>
                           <label>
-                            <Field type="radio" name="domtarBan" value="No" />
+                            <Field type="radio" name="ban" value="No" />
                             No
                           </label>
                         </div>
                       </div>
+
+                      {values.ban === "Yes" ? (
+                        <div className={styles.container}>
+                          <div className={styles.label}>
+                            Please specify company name.
+                          </div>
+                          <Field
+                            className={styles.inputFieldLarge}
+                            name="banCompany"
+                            placeholder="Company Name"
+                          />
+                        </div>
+                      ) : null}
 
                       {/* Next Section Moving Button */}
                       <button
@@ -339,7 +340,11 @@ function GeneralInfo() {
                   </div>
                 </>
               ) : (
-                <div style={{ position: "relative" }}>
+                <div
+                  style={{
+                    position: "relative",
+                  }}
+                >
                   <button
                     className={styles.buttonMed}
                     style={{

@@ -9,6 +9,10 @@ import styles from "./EmployeeApplication.module.css";
 import GeneralInfo from "../../Components/EmployeeFormComp/GeneralInfo";
 import LineHaulDriver from "../../Components/EmployeeFormComp/LineHaulDriver";
 import EmploymentRecord from "../../Components/EmployeeFormComp/EmploymentRecord";
+import TermsAndConditions from "../../Components/EmployeeFormComp/TermsAndConditions";
+import OnDutyHours from "../../Components/EmployeeFormComp/OnDutyHours";
+import UploadDocs from "../../Components/EmployeeFormComp/UploadDocs";
+import DriverExperience from "../../Components/EmployeeFormComp/DriverExperience";
 
 function EmployeeApplication() {
   const track = [
@@ -125,11 +129,25 @@ function EmployeeApplication() {
                 <EmploymentRecord />
               </div>
             ) : null}
-            {currentUserFormStatus === 4 ? <div>Driver Experience</div> : null}
-            {currentUserFormStatus === 5 ? <div>Upload Documents</div> : null}
-            {currentUserFormStatus === 6 ? <div>On Duty Hours</div> : null}
+            {currentUserFormStatus === 4 ? (
+              <div>
+                <DriverExperience />
+              </div>
+            ) : null}
+            {currentUserFormStatus === 5 ? (
+              <div>
+                <UploadDocs />
+              </div>
+            ) : null}
+            {currentUserFormStatus === 6 ? (
+              <div>
+                <OnDutyHours />
+              </div>
+            ) : null}
             {currentUserFormStatus === 7 ? (
-              <div>Terms and Conditions</div>
+              <div>
+                <TermsAndConditions />
+              </div>
             ) : null}
           </div>
         </div>
