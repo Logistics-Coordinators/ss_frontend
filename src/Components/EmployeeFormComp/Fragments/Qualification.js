@@ -51,7 +51,7 @@ const QualificationCard = ({
         </div>
 
         <div className={styles.containerEdu}>
-          <div className={styles.label}>Institution Location</div>
+          <div className={styles.label}>Duration</div>
           <div
             className={styles.inputFieldSmall}
             style={{ marginTop: 0 }}
@@ -151,7 +151,7 @@ const InputQualificationHistory = ({
         </div>
 
         <div className={styles.containerEdu}>
-          <div className={styles.label}>Institution Location</div>
+          <div className={styles.label}>Duration</div>
           <Field
             className={styles.inputFieldSmall}
             style={{ marginTop: 0 }}

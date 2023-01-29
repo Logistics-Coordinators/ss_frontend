@@ -43,7 +43,7 @@ function EmployeeApplication() {
 
     if (item) {
       localStorage.removeItem("token");
-      navigate("/login");
+      navigate("/");
     }
   };
 

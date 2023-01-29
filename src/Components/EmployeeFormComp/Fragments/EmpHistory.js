@@ -249,12 +249,12 @@ const InputEmploymentHistory = ({
         }}
       >
         <div className={styles.containerEmp}>
-          <div className={styles.labelEmp}>Employee Name</div>
+          <div className={styles.labelEmp}>Employer Name</div>
           <Field
             className={styles.inputFieldLargeEmp}
             style={{ marginTop: 0 }}
             name="empName"
-            placeholder="Enter your employee name"
+            placeholder="Enter your employer name"
           />
         </div>
 
@@ -315,7 +315,7 @@ const InputEmploymentHistory = ({
         </div>
 
         <div className={styles.containerEmp}>
-          <div className={styles.labelEmp}>Salary wage</div>
+          <div className={styles.labelEmp}>Salary/Wage</div>
           <Field
             className={styles.inputFieldLargeEmp}
             style={{ marginTop: 0 }}

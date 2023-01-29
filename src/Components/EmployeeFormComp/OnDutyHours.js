@@ -8,7 +8,6 @@ function onDutyHours() {
     <div>
       <Formik
         initialValues={{
-          socialSecurityNumber: "",
           licenseNumber: "",
           state: "",
           class: "",
@@ -20,10 +19,11 @@ function onDutyHours() {
           issuingState: "",
           anotherEmployer: "",
           intendToWorkForanotherEmployer: "",
+          dayDateHoursTable: [],
         }}
         onSubmit={(val, actions) => console.log(val)}
       >
-        {({ values }) => (
+        {({ values, setFieldValue }) => (
           <Form>
             <div
               style={{
@@ -32,15 +32,6 @@ function onDutyHours() {
               }}
             >
               <div className={styles.generalLeft}>
-                <div className={styles.container}>
-                  <div className={styles.label}>Social Security Number</div>
-                  <Field
-                    className={styles.inputFieldLarge}
-                    name="socialSecurityNumber"
-                    placeholder="Social Security Number"
-                  />
-                </div>
-
                 <div className={styles.container}>
                   <div className={styles.label}>Driver’s License Number</div>
                   <Field
@@ -180,7 +171,7 @@ function onDutyHours() {
               </div>
 
               <div className={styles.generalRight}>
-                <HoursTable />
+                <HoursTable setFieldValue={setFieldValue} />
               </div>
             </div>
           </Form>

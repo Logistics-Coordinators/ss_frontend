@@ -90,7 +90,7 @@ function DriverExperience() {
                 <div className={styles.containerSelect}>
                   <div
                     className={styles.labelSelect}
-                    style={{ color: "#E84B01" }}
+                    style={{ color: "#E84B01", fontSize: "1.1rem" }}
                     id="driverExperience"
                   >
                     Driver Experience
@@ -165,7 +165,7 @@ function DriverExperience() {
                           name="classOfEquipment"
                           value="TractorAndSemiTrailor"
                         />
-                        Tractor and semi trailor
+                        Tractor and semi trailer
                       </label>
                       {values.classOfEquipment.includes(
                         "TractorAndSemiTrailor"
@@ -398,7 +398,7 @@ function DriverExperience() {
               >
                 <Field type="radio" name="entitledToWork" value="Yes" />
               </div>
-              <p>
+              <p className={styles.label}>
                 I am legally entitled to work in Canada, Logistics Coordinators
                 May verify my work record and qualifications. Any false or
                 misleading statements made by me on this application shall be

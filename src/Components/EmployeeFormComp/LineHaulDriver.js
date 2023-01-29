@@ -57,11 +57,11 @@ function LineHaulDriver() {
                     />
                   </div>
                   <div className={styles.container}>
-                    <div className={styles.label}>Alternative number</div>
+                    <div className={styles.label}>Alternate number</div>
                     <Field
                       className={styles.inputFieldLarge}
                       name="altNumber"
-                      placeholder="Your alternative number"
+                      placeholder="Your alternate number"
                     />
                   </div>
 
@@ -97,11 +97,11 @@ function LineHaulDriver() {
                     />
                   </div>
                   <div className={styles.container}>
-                    <div className={styles.label}>Referred person name</div>
+                    <div className={styles.label}>Referral</div>
                     <Field
                       className={styles.inputFieldLarge}
                       name="refferedPersonName"
-                      placeholder="Enter referred person name"
+                      placeholder="Specify name"
                     />
                   </div>
                   <div className={styles.container}>
@@ -181,7 +181,7 @@ function LineHaulDriver() {
 
                   <div className={styles.containerSelect}>
                     <div className={styles.labelSelect} id="convictedFelony">
-                      Have you ever convicted felony?
+                      Have you ever been convicted of a felony?
                     </div>
                     <div
                       role="group"
@@ -215,8 +215,8 @@ function LineHaulDriver() {
 
                   <div className={styles.containerSelect}>
                     <div className={styles.labelSelect} id="unabletoPeform">
-                      Is there any reason you might to unable to perform a job
-                      (If yes please specific)
+                      Is there any reason you might be unable to perform your
+                      job (If yes please be specific)
                     </div>
                     <div
                       role="group"
