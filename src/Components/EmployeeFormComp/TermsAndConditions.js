@@ -635,7 +635,7 @@ function TermsAndConditions() {
                 <button
                   className={styles.buttonMed}
                   style={{
-                    width: "10rem",
+                    width: "12rem",
                     padding: "10px 35px",
                   }}
                   type="submit"
