@@ -25,7 +25,7 @@ function HoursTable({ setFieldValue }) {
 
   function addDays(originalDate, days) {
     let cloneDate = new Date(originalDate.valueOf());
-    cloneDate.setDate(cloneDate.getDate() + days);
+    cloneDate.setDate(cloneDate.getDate() - days);
     return cloneDate;
   }
 
@@ -72,7 +72,9 @@ function HoursTable({ setFieldValue }) {
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
+            <td>
+              1<p style={{ fontSize: ".8rem" }}>(Yesterday)</p>
+            </td>
             <td>
               <input
                 className={styles.input}
