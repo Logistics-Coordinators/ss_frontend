@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Formik, Form, Field } from "formik";
 
 import styles from "./Company.module.css";
@@ -15,18 +16,31 @@ function Company({ setShowCompanyForm }) {
 
   const handleCompanyFormSubmit = (val, resetForm) => {
     // e.preventDefault();
-    console.log(val);
-    emailjs.send(serviceID, templateID, val, publicKey).then(
-      (response) => {
-        console.log("SUCCESS", response);
+    // console.log(val);
+    // emailjs.send(serviceID, templateID, val, publicKey).then(
+    //   (response) => {
+    //     console.log("SUCCESS", response);
+    //     resetForm();
+    //     setShowCompanyForm(false);
+    //     alert("Your Application has been recieved.");
+    //   },
+    //   (error) => {
+    //     console.log("FAILED");
+    //   }
+    // );
+
+    axios
+      .post(
+        "https://loadlc-backend-staging.herokuapp.com/api/v1/SS/addNewcompany",
+        val
+      )
+      .then((response) => {
         resetForm();
         setShowCompanyForm(false);
         alert("Your Application has been recieved.");
-      },
-      (error) => {
-        console.log("FAILED");
-      }
-    );
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

@@ -54,41 +54,15 @@ function Footer() {
             </a>
           </div>
         </div>
+
         <div className={styles.rightFooter}>
-          <div className={styles.subFooter}>
-            <p className={styles.footerLink}>
-              <a
-                href="https://www.logistics-coordinators.com/services/"
-                target="_blank"
-                without
-                rel="noreferrer"
-              >
-                SERVICES
-              </a>
-            </p>
-            <p className={styles.footerLink}>STRATEGY</p>
-            <p className={styles.footerLink}>OPPORTUNITIES</p>
-            {/* <p className={styles.footerLink}></p> */}
+          <h1 className={styles.subtitle}>Contact Us</h1>
+          <div>
+            Address: 24-155 East Beaver Creek Road, Suite 892 Richmond Hill, ON
+            L4B 2N1
           </div>
-          <div className={styles.subFooter}>
-            <p className={styles.footerLink}>ABOUT</p>
-            <a
-              href="https://www.logistics-coordinators.com/"
-              target="_blank"
-              without
-              rel="noreferrer"
-            >
-              <p className={styles.footerLink}>WEBSITE</p>
-            </a>
-            <a href="mailto:info@loadlc.com">
-              <p className={styles.footerLink}>CONTACT</p>
-            </a>
-          </div>
-          <div className={styles.subFooter}>
-            <p className={styles.footerLink}>NEWS</p>
-            <p className={styles.footerLink}>FORUMS</p>
-            <p className={styles.footerLink}>COMPANY</p>
-          </div>
+          <div>Phone: +1-888-8LOADLC(856-2352)</div>
+          <div>Email: info@logistics-coordinators.com</div>
         </div>
       </div>
       <div
@@ -104,11 +78,6 @@ function Footer() {
         }}
       >
         <p>@LOGISTIC CORDINATORS TM, ALL RIGHTS RESERVED</p>
-        <div className={styles.othersContainer}>
-          <p>
-            REACH US AT: <a href="tel:8888562352">(888) 856 2352</a>
-          </p>
-        </div>
       </div>
     </div>
   );

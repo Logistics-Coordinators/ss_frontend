@@ -9,6 +9,7 @@ import Login from "./Components/Login/Login";
 // import Employee from "./Pages/Employee/Employee";
 // import Company from "./Pages/Company/Company";
 import EmployeeApplication from "./Pages/EmployeeApplication/EmployeeApplication";
+import EmployeeVerification from "./Pages/EmployeeVerification/EmployeeVerification";
 
 function App() {
   const [user, setUser] = useState(""); // For getting user details
@@ -37,6 +38,7 @@ function App() {
             {/* <Route path="/employee" element={<Employee />} />
           <Route path="/company" element={<Company />} /> */}
             <Route path="employeeform" element={<EmployeeApplication />} />
+            <Route path="verifyEmployee" element={<EmployeeVerification />} />
             <Route path="/login" element={<Login />} />
             {/* </Switch> */}
           </Routes>

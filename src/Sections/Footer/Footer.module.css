@@ -24,10 +24,10 @@
 .rightFooter {
   /* border: 2px solid red; */
   margin-top: 0rem;
-
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 2rem;
+  /* justify-content: space-between; */
 
   width: 50%;
   height: fit-content;

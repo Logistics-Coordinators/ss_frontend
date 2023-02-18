@@ -1,0 +1,195 @@
+.generalLeft {
+  /* border: 2px solid red; */
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+}
+
+.generalRight {
+  /* border: 2px solid red; */
+
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container {
+  /* border: 2px solid green; */
+  margin-bottom: 0.8rem;
+  width: fit-content;
+}
+
+.containerEdu {
+  /* border: 2px solid green; */
+  margin: 0.8rem 0;
+  margin-right: 1rem;
+  width: 30rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.containerEmp {
+  /* border: 2px solid green; */
+  margin: 0.8rem 0;
+  margin-right: 2.5rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.containerSelect {
+  margin-bottom: 0.8rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerSelectEmp {
+  /* border: 2px solid black; */
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.labelSelect {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 55%;
+}
+
+.radioContainer {
+  width: 45%;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.label {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: fit-content;
+  margin-right: 1rem;
+}
+
+.labelEmp {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: fit-content;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.inputFieldSmall {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-top: 0.8rem;
+  margin-right: 1.5rem;
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  border: 1px solid #e1e3e6;
+  border-radius: 6px;
+  width: 14rem;
+}
+
+.inputFieldSmallEmp {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-top: 0.8rem;
+  margin-right: 1.5rem;
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  border: 1px solid #e1e3e6;
+  border-radius: 6px;
+  width: 70%;
+}
+
+.inputFieldLarge {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-top: 0.8rem;
+  margin-right: 1.5rem;
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  border: 1px solid #e1e3e6;
+  border-radius: 6px;
+
+  /* Changed Wdth 14 + 14 + 1.5 + 1.5*/
+  width: 31rem;
+}
+
+.inputFieldLargeEmp {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin-top: 0.8rem;
+  margin-right: 1.5rem;
+  font-size: 0.8rem;
+  padding: 8px 10px;
+  border: 1px solid #e1e3e6;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.buttonMed {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 50px;
+  width: 8rem;
+  border-radius: 6px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  background: #e84b01;
+  color: white;
+  border: none;
+}
+
+.buttonMed:hover {
+  cursor: pointer;
+}
+
+.buttonMedDisabled {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 50px;
+  width: 8rem;
+  border-radius: 6px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  background: transparent;
+  color: black;
+  border: 2px solid #e84b01;
+}
+
+.headingText {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #e84b01;
+}
+
+.tAndCText {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.checkedLabel {
+  font-size: 1rem;
+  font-family: "Inter";
+  font-weight: 500;
+  margin-top: 0.5rem;
+}

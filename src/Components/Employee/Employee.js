@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Formik, Form, Field } from "formik";
 // import { Dropdown } from "semantic-ui-react" ;
 
@@ -7,7 +8,6 @@ import { Formik, Form, Field } from "formik";
 import "semantic-ui-css/components/dropdown.min.css";
 
 import styles from "./Employee.module.css";
-
 
 import { positions } from "../../utils/positions";
 
@@ -19,18 +19,38 @@ function Employee({ setShowEmployeeForm }) {
   const serviceID = "service_lv1w9m5";
 
   const handleEmpFormSubmit = (val, resetForm) => {
-    emailjs.send(serviceID, templateID, val, publicKey).then(
-      (response) => {
-        console.log("SUCCESS", response);
-        // reset Form
+    // emailjs.send(serviceID, templateID, val, publicKey).then(
+    //   (response) => {
+    //     console.log("SUCCESS", response);
+    //     // reset Form
+    //     resetForm();
+    //     setShowEmployeeForm(false);
+    //     alert("Your Application has been recieved.");
+    //   },
+    //   (error) => {
+    //     console.log("FAILED");
+    //   }
+    // );
+
+    console.log(val);
+
+    axios
+      .post(
+        "https://loadlc-backend-staging.herokuapp.com/api/v1/SS/addNewemployee",
+        val,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((response) => {
         resetForm();
         setShowEmployeeForm(false);
         alert("Your Application has been recieved.");
-      },
-      (error) => {
-        console.log("FAILED");
-      }
-    );
+        console.log(response);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -149,15 +169,14 @@ function Employee({ setShowEmployeeForm }) {
                     <select
                       name="empPosition"
                       className={styles.inputField}
-                      // value={values.empPosition}
-                      onChange={(_, { value }) =>
-                        setFieldValue("empPosition", value)
-                      }
+                      onChange={(e) => {
+                        setFieldValue("empPosition", e.target.value);
+                      }}
                     >
                       {positions.map((element) => {
                         return (
                           <option
-                            value={Object.keys(element)[0]}
+                            value={Object.values(element)[0]}
                             key={Object.keys(element)[0]}
                           >
                             {Object.values(element)[0]}
