@@ -1,5 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import Loader from "../../Assets/LoadingAnimation.gif";
 
 import { Formik, Form, Field } from "formik";
 
@@ -12,14 +14,12 @@ import { UserContext } from "../../Context/UserContext.js";
 import LabourConnect from "../../Assets/LabourConnect-whitebg.svg";
 
 function Login() {
-  const url = "https://lc-backend-v2.herokuapp.com/api/v1/LC/login";
-
-  //   const [email, setEmail] = useState("");
-  //   const [password, setPassword] = useState("");
+  const url = "https://loadlc-backend-staging.herokuapp.com/api/v1/LC/login";
 
   const navigate = useNavigate();
 
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const headers = {
     "Content-Type": "application/json",
@@ -40,6 +40,7 @@ function Login() {
   }, 700);
 
   const handleLogin = (val) => {
+    setIsLoading(true);
     Axios.post(
       url,
       {
@@ -71,6 +72,7 @@ function Login() {
           console.log("User Authenticated");
         }
         setIsLoggedIn(item);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -85,54 +87,71 @@ function Login() {
           //   setModalColor("red");
           console.log("Please Try Again");
         }
+        setIsLoading(false);
       });
   };
 
   return (
-    <div className={styles.parentContainer}>
-      <div className={styles.logoContainer}>
-        <img src={LabourConnect} width={180} draggable={false} alt="logo" />
+    <>
+      {isLoading ? (
+        <div
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "fit-content",
+            zIndex: 3,
+          }}
+        >
+          <img src={Loader} alt="loader" style={{}} />
+        </div>
+      ) : null}
+      <div className={styles.parentContainer}>
+        <div className={styles.logoContainer}>
+          <img src={LabourConnect} width={180} draggable={false} alt="logo" />
+        </div>
+        <Formik
+          initialValues={{
+            email: "",
+            password: "",
+          }}
+          onSubmit={(val, actions) => handleLogin(val)}
+        >
+          {({ values }) => (
+            <Form>
+              <div className={styles.loginContainer} style={{ zIndex: 1 }}>
+                <div className={styles.heading_container}>
+                  <h1 className={styles.headingText}>Sign In</h1>
+                </div>
+                <div className={styles.containerEdu}>
+                  <div className={styles.label}>Email</div>
+                  <Field
+                    className={styles.inputFieldSmall}
+                    style={{ marginTop: 0 }}
+                    name="email"
+                    placeholder="Email"
+                  />
+                </div>
+                <div className={styles.containerEdu}>
+                  <div className={styles.label}>Password</div>
+                  <Field
+                    className={styles.inputFieldSmall}
+                    style={{ marginTop: 0 }}
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </div>
+                <button className={styles.buttonMed} type="submit">
+                  Submit
+                </button>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
-      <Formik
-        initialValues={{
-          email: "",
-          password: "",
-        }}
-        onSubmit={(val, actions) => handleLogin(val)}
-      >
-        {({ values }) => (
-          <Form>
-            <div className={styles.loginContainer}>
-              <div className={styles.heading_container}>
-                <h1 className={styles.headingText}>Sign In</h1>
-              </div>
-              <div className={styles.containerEdu}>
-                <div className={styles.label}>Email</div>
-                <Field
-                  className={styles.inputFieldSmall}
-                  style={{ marginTop: 0 }}
-                  name="email"
-                  placeholder="Email"
-                />
-              </div>
-              <div className={styles.containerEdu}>
-                <div className={styles.label}>Password</div>
-                <Field
-                  className={styles.inputFieldSmall}
-                  style={{ marginTop: 0 }}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-              </div>
-              <button className={styles.buttonMed} type="submit">
-                Submit
-              </button>
-            </div>
-          </Form>
-        )}
-      </Formik>
-    </div>
+    </>
   );
 }
 

@@ -17,7 +17,12 @@ function LineHaulDriver() {
           emergencyContactName: "",
           emergencyContactNumber: "",
           emergencyContactRelationship: "",
-          refferedPersonName: "",
+          refferedPersonName1: "",
+          refferedPersonContact1: "",
+          refferedPersonName2: "",
+          refferedPersonContact2: "",
+          refferedPersonName3: "",
+          refferedPersonContact3: "",
           pay: "",
           legalRightToWorkInCanada: "",
           accidentRecord1: "",
@@ -97,11 +102,51 @@ function LineHaulDriver() {
                     />
                   </div>
                   <div className={styles.container}>
-                    <div className={styles.label}>Referral</div>
+                    <div className={styles.label}>Referral 1</div>
                     <Field
                       className={styles.inputFieldLarge}
-                      name="refferedPersonName"
+                      name="refferedPersonName1"
                       placeholder="Specify name"
+                    />
+                  </div>
+                  <div className={styles.container}>
+                    <div className={styles.label}>Referral 1 Email</div>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      name="refferedPersonContact1"
+                      placeholder="Specify Email"
+                    />
+                  </div>
+                  <div className={styles.container}>
+                    <div className={styles.label}>Referral 2</div>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      name="refferedPersonName2"
+                      placeholder="Specify name"
+                    />
+                  </div>
+                  <div className={styles.container}>
+                    <div className={styles.label}>Referral 2 Email</div>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      name="refferedPersonContact2"
+                      placeholder="Specify Email"
+                    />
+                  </div>
+                  <div className={styles.container}>
+                    <div className={styles.label}>Referral 3</div>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      name="refferedPersonName3"
+                      placeholder="Specify name"
+                    />
+                  </div>
+                  <div className={styles.container}>
+                    <div className={styles.label}>Referral 3 Email</div>
+                    <Field
+                      className={styles.inputFieldLarge}
+                      name="refferedPersonContact3"
+                      placeholder="Specify Email"
                     />
                   </div>
                   <div className={styles.container}>

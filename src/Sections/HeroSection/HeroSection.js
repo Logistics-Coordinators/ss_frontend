@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 import "../../styles/Layout.css";
 import styles from "./HeroSection.module.css";
@@ -73,7 +74,12 @@ function HeroSection() {
         <Navbar />
         <div className="layoutContainer">
           <div style={{ position: "relative" }}>
-            <div className={styles.contentContainer}>
+            <motion.div
+              className={styles.contentContainer}
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              transition={{ duration: 1, type: "tween" }}
+            >
               <p className={styles.heading}>
                 TEMPORARY AND PERMANENT RECRUITMENT SERVICES
               </p>
@@ -95,12 +101,17 @@ function HeroSection() {
                   EMPLOYERS START HERE
                 </button>
               </div>
-            </div>
+            </motion.div>
             <div className={styles.subHero}>
-              <div className={styles.rightSubContainer}>
+              <motion.div
+                className={styles.rightSubContainer}
+                initial={{ x: "150%" }}
+                animate={{ x: "0%" }}
+                transition={{ duration: 1, type: "tween" }}
+              >
                 <span className={styles.orangeLine}></span>
                 <p className={styles.subText}>WE BELIEVE IN SERVICE</p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
