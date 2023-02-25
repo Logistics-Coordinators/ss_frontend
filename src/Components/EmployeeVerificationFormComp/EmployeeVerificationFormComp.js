@@ -6,7 +6,11 @@ import styles from "./FormComp.module.css";
 function EmployeeVerificationFormComp() {
   return (
     <div>
-      <Formik initialValues={{}}>
+      <Formik
+        initialValues={{
+          classOfEquipment: [],
+        }}
+      >
         {({
           //   isSubmitting,
           values,
@@ -295,6 +299,340 @@ function EmployeeVerificationFormComp() {
                       />
                       No
                     </label>
+                  </div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    width: "100%",
+                  }}
+                >
+                  <div
+                    style={{
+                      flexDirection: "column",
+                      // border: "2px solid black",
+                    }}
+                    className={styles.generalLeft}
+                  >
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="BTrain"
+                        />
+                        B-Train
+                      </label>
+                      {values.classOfEquipment.includes("BTrain") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="BTrainMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="DumpTruck"
+                        />
+                        Dump - Truck
+                      </label>
+                      {values.classOfEquipment.includes("DumpTruck") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="DumpTruckMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="LCV"
+                        />
+                        LCV
+                      </label>
+                      {values.classOfEquipment.includes("LCV") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="LCVMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="Refrigerated"
+                        />
+                        Refrigerated
+                      </label>
+                      {values.classOfEquipment.includes("Refrigerated") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="RefrigeratedMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="SuperBus"
+                        />
+                        Super Bus
+                      </label>
+                      {values.classOfEquipment.includes("SuperBus") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="SuperBusMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="TractorSemiTrailer"
+                        />
+                        Tractor Semi Trailer
+                      </label>
+                      {values.classOfEquipment.includes(
+                        "TractorSemiTrailer"
+                      ) ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="TractorSemiTrailerMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="TractorTrailer"
+                        />
+                        Tractor - Trailer
+                      </label>
+                      {values.classOfEquipment.includes("TractorTrailer") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="TractorTrailerMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="others"
+                        />
+                        Other (specify)
+                      </label>
+                      {values.classOfEquipment.includes("others") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="othersMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="Decks"
+                        />
+                        Decks
+                      </label>
+                      {values.classOfEquipment.includes("Decks") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="DecksMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="Flatbed"
+                        />
+                        Flat bed
+                      </label>
+                      {values.classOfEquipment.includes("Flatbed") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="FlatbedMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="MotorCoach"
+                        />
+                        Motor coach
+                      </label>
+                      {values.classOfEquipment.includes("MotorCoach") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="MotorCoachMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="StraightTruck"
+                        />
+                        Straight Truck
+                      </label>
+                      {values.classOfEquipment.includes("StraightTruck") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="StraightTruckMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="Tank"
+                        />
+                        Tank
+                      </label>
+                      {values.classOfEquipment.includes("Tank") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="TankMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="TractorandTwoTrailer"
+                        />
+                        Tractor and Two Trailer
+                      </label>
+                      {values.classOfEquipment.includes(
+                        "TractorandTwoTrailer"
+                      ) ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="TractorandTwoTrailerMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div>
+                      <label className={styles.checkedLabel}>
+                        <Field
+                          type="checkbox"
+                          name="classOfEquipment"
+                          value="Vans"
+                        />
+                        Vans
+                      </label>
+                      {values.classOfEquipment.includes("Vans") ? (
+                        <div>
+                          <Field
+                            className={styles.inputFieldSmall}
+                            name="VansMiles"
+                            placeholder="Approximate Miles Driven"
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      flexDirection: "column",
+                    }}
+                    className={styles.generalRight}
+                  >
+                    <span className={styles.label}>
+                      Driver Experience Details
+                    </span>
+                    <span
+                      style={{ marginTop: ".5rem" }}
+                      className={styles.label}
+                    >
+                      Has Driving Experience with Commercial Vehicles
+                    </span>
                   </div>
                 </div>
               </div>

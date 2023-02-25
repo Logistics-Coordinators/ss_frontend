@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
+import axios from "axios";
 
 import styles from "./FormComp.module.css";
 import {
@@ -63,6 +64,34 @@ function GeneralInfo() {
   // Final Form Submit Handler Function
   const handleGeneralInfoSubmit = (val, actions) => {
     console.log(val);
+    const body = {
+      position: val.position,
+      application_date: val.applicationDate,
+      first_name: val.firstName,
+      last_name: val.lastName,
+      email: val.email,
+      address1: val.address1,
+      address2: val.address2,
+      city: val.city,
+      zip: val.zip,
+      phone: val.phone,
+      date_of_birth: val.dateOfBirth,
+      employment_avail: val.empDate,
+      total_miles: val.totalMiles,
+      major_city: val.majorCity,
+      bond_refusal: val.bondRefusal,
+      cross_borders: val.crossBorders,
+      ban: val.ban,
+      ban_company: val.banCompany,
+      education: eduHistory,
+    };
+    axios
+      .post(
+        "https://loadlc-backend-staging.herokuapp.com/api/v1/SS/generalInfo",
+        body
+      )
+      .then(() => console.log("General Info Submitted"))
+      .catch((err) => console.log(err));
   };
 
   const handleNextClick = (e) => {
@@ -73,7 +102,7 @@ function GeneralInfo() {
       : setShowInputEducationHistory(true);
 
     setShowSectionOne(false);
-  };  
+  };
 
   return (
     <div>

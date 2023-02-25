@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import styles from "./FormComp.module.css";
+import axios from "axios";
 
 import {
   QualificationCard,
@@ -53,6 +54,10 @@ function DriverExperience() {
         );
   }
 
+  function handleSubmit(val, actions) {
+    console.log(val);
+  }
+
   return (
     <div>
       <Formik
@@ -76,7 +81,7 @@ function DriverExperience() {
           courses: "",
           entitledToWork: "",
         }}
-        onSubmit={(val, actions) => console.log(val)}
+        onSubmit={(val, actions) => handleSubmit(val, actions)}
       >
         {({ values }) => (
           <Form>
