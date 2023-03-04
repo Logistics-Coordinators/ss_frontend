@@ -101,16 +101,16 @@ function LineHaulDriver() {
       convicted_felony_reason: val.convictedFelonyReason,
       unable_to_peform: val.unabletoPeform,
       unable_to_peform_reason: val.unabletoPeformReason,
-      application_id: application_id,
+      application_id: localStorage.getItem("application_id"),
     };
 
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/driverInfo`, body)
       .then((res) => {
         console.log(res);
-        if (!application_id) {
-          localStorage.setItem("application_id", res.data.application_id);
-        }
+        // if (!application_id) {
+        //   localStorage.setItem("application_id", res.data.application_id);
+        // }
       })
       .catch((err) => console.log(err));
   };

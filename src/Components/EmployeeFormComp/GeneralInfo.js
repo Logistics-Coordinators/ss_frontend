@@ -78,13 +78,12 @@ function GeneralInfo() {
         )
         .then((res) => {
           localStorage.setItem("application_id", res.data.application_id);
+          console.log(res.data.application_id);
+          application_id = res.data.application_id;
+          console.log("Id", application_id);
         })
         .catch((err) => console.log(err));
     }
-  }, []);
-
-  useEffect(() => {
-    application_id = localStorage.getItem("application_id");
 
     if (application_id) {
       axios
@@ -166,16 +165,18 @@ function GeneralInfo() {
       ban: val.ban,
       ban_company: val.banCompany,
       education: eduHistory,
-      application_id: application_id,
+      application_id: localStorage.getItem("application_id"),
     };
+
+    console.log(body);
 
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generalInfo`, body)
       .then((res) => {
-        console.log(res);
-        if (!application_id) {
-          localStorage.setItem("application_id", res.data.application_id);
-        }
+        console.log(application_id);
+        // if (!application_id) {
+        //   localStorage.setItem("application_id", res.data.application_id);
+        // }
       })
       .catch((err) => console.log(err));
   };
