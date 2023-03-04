@@ -67,6 +67,8 @@ function GeneralInfo() {
   let application_id,
     data = {};
 
+  application_id = localStorage.getItem("application_id");
+
   useEffect(() => {
     const email = localStorage.getItem("email");
 

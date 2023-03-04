@@ -11,9 +11,8 @@ function LineHaulDriver() {
   const [savedData, setSavedData] = useState();
   const [loading, setLoading] = useState(false);
 
+  application_id = localStorage.getItem("application_id");
   useEffect(() => {
-    application_id = localStorage.getItem("application_id");
-
     if (application_id) {
       axios
         .get(
