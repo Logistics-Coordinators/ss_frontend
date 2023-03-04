@@ -3,17 +3,19 @@ import { Formik, Form, Field } from "formik";
 
 import axios from "axios";
 import styles from "./FormComp.module.css";
+import Loader from "../../Assets/LoadingAnimation.gif";
 
 function LineHaulDriver() {
   let application_id,
     data = {};
 
   const [savedData, setSavedData] = useState();
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   application_id = localStorage.getItem("application_id");
   useEffect(() => {
     if (application_id) {
+      setIsLoading(true);
       axios
         .get(
           `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/driverInfo?application_id=${application_id}`
@@ -69,6 +71,7 @@ function LineHaulDriver() {
           };
 
           setSavedData(data);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -103,10 +106,13 @@ function LineHaulDriver() {
       application_id: localStorage.getItem("application_id"),
     };
 
+    setIsLoading(true);
+
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/driverInfo`, body)
       .then((res) => {
         console.log(res);
+        setIsLoading(false);
         // if (!application_id) {
         //   localStorage.setItem("application_id", res.data.application_id);
         // }
@@ -151,6 +157,20 @@ function LineHaulDriver() {
         }) => (
           <Form>
             <div style={{ position: "relative" }}>
+              {isLoading ? (
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "fit-content",
+                    zIndex: 3,
+                  }}
+                >
+                  <img src={Loader} alt="loader" style={{}} />
+                </div>
+              ) : null}
               <div
                 style={{
                   display: "flex",

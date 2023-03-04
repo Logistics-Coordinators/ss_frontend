@@ -4,6 +4,8 @@ import axios from "axios";
 import { dateFormatter } from "../../utils/common.js";
 
 import styles from "./FormComp.module.css";
+import Loader from "../../Assets/LoadingAnimation.gif";
+
 import {
   EducationCard,
   InputEducationHistory,
@@ -17,6 +19,7 @@ function GeneralInfo() {
   const [showSectionOne, setShowSectionOne] = useState(true);
   const [userEmail, setUserEmail] = useState(localStorage.getItem("email"));
   const [savedData, setSavedData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   // Button States
   // const [isNextContinueDisabled, setIsNextContinueDisabled] = useState(true);
@@ -88,6 +91,7 @@ function GeneralInfo() {
     }
 
     if (application_id) {
+      setIsLoading(true);
       axios
         .get(
           `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generalInfo?application_id=${application_id}`
@@ -138,9 +142,11 @@ function GeneralInfo() {
 
           setSavedData(data);
           setEduHistory(education);
+          setIsLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     }
   }, []);
@@ -172,10 +178,13 @@ function GeneralInfo() {
 
     console.log(body);
 
+    setIsLoading(true);
+
     axios
       .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generalInfo`, body)
       .then((res) => {
         console.log(application_id);
+        setIsLoading(false);
         // if (!application_id) {
         //   localStorage.setItem("application_id", res.data.application_id);
         // }
@@ -231,6 +240,20 @@ function GeneralInfo() {
         }) => (
           <Form>
             <div>
+              {isLoading ? (
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "fit-content",
+                    zIndex: 3,
+                  }}
+                >
+                  <img src={Loader} alt="loader" style={{}} />
+                </div>
+              ) : null}
               {showSectionOne ? (
                 <>
                   <div
