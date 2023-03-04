@@ -30,10 +30,7 @@ function Company({ setShowCompanyForm }) {
     // );
 
     axios
-      .post(
-        "https://loadlc-backend-staging.herokuapp.com/api/v1/SS/addNewcompany",
-        val
-      )
+      .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/addNewcompany`, val)
       .then((response) => {
         resetForm();
         setShowCompanyForm(false);

@@ -1,39 +1,149 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 
+import axios from "axios";
 import styles from "./FormComp.module.css";
 
 function LineHaulDriver() {
+  let application_id,
+    data = {};
+
+  const [savedData, setSavedData] = useState();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    application_id = localStorage.getItem("application_id");
+
+    if (application_id) {
+      axios
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/driverInfo?application_id=${application_id}`
+        )
+        .then((res) => {
+          console.log(res);
+          const {
+            social_insurance_number,
+            alt_number,
+            emergency_contact_name,
+            emergency_contact_number,
+            emergency_contact_relationship,
+            reffered_person_name_1,
+            reffered_person_email_1,
+            reffered_person_name_2,
+            reffered_person_email_2,
+            reffered_person_name_3,
+            reffered_person_email_3,
+            pay,
+            legal_right_to_work_in_canada,
+            accident_record1,
+            accident_record2,
+            accident_record3,
+            prev_bonding_company_name,
+            convicted_felony,
+            convicted_felony_reason,
+            unable_to_peform,
+            unable_to_peform_reason,
+          } = res.data.result;
+
+          data = {
+            socialInsuranceNumber: social_insurance_number,
+            altNumber: alt_number,
+            emergencyContactName: emergency_contact_name,
+            emergencyContactNumber: emergency_contact_number,
+            emergencyContactRelationship: emergency_contact_relationship,
+            refferedPersonName1: reffered_person_name_1,
+            refferedPersonContact1: reffered_person_email_1,
+            refferedPersonName2: reffered_person_name_2,
+            refferedPersonContact2: reffered_person_email_2,
+            refferedPersonName3: reffered_person_name_3,
+            refferedPersonContact3: reffered_person_email_3,
+            pay: pay,
+            legalRightToWorkInCanada: legal_right_to_work_in_canada,
+            accidentRecord1: accident_record1,
+            accidentRecord2: accident_record2,
+            accidentRecord3: accident_record3,
+            prevBondingCompanyName: prev_bonding_company_name,
+            convictedFelony: convicted_felony,
+            convictedFelonyReason: convicted_felony_reason,
+            unabletoPeform: unable_to_peform,
+            unabletoPeformReason: unable_to_peform_reason,
+          };
+
+          setSavedData(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
   const handleLineHaulSubmit = (val, actions) => {
-    console.log(val);
+    const body = {
+      email: localStorage.getItem("email"),
+      social_insurance_number: val.socialInsuranceNumber,
+      alt_number: val.altNumber,
+      emergency_contact_name: val.emergencyContactName,
+      emergency_contact_number: val.emergencyContactNumber,
+      emergency_contact_relationship: val.emergencyContactRelationship,
+      reffered_person_name_1: val.refferedPersonName1,
+      reffered_person_email_1: val.refferedPersonContact1,
+      reffered_person_name_2: val.refferedPersonName2,
+      reffered_person_email_2: val.refferedPersonContact2,
+      reffered_person_name_3: val.refferedPersonName3,
+      reffered_person_email_3: val.refferedPersonContact3,
+      pay: val.pay,
+      legal_right_to_work_in_canada: val.legalRightToWorkInCanada,
+      accident_record1: val.accidentRecord1,
+      accident_record2: val.accidentRecord2,
+      accident_record3: val.accidentRecord3,
+      prev_bonding_company_name: val.prevBondingCompanyName,
+      convicted_felony: val.convictedFelony,
+      convicted_felony_reason: val.convictedFelonyReason,
+      unable_to_peform: val.unabletoPeform,
+      unable_to_peform_reason: val.unabletoPeformReason,
+      application_id: application_id,
+    };
+
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/driverInfo`, body)
+      .then((res) => {
+        console.log(res);
+        if (!application_id) {
+          localStorage.setItem("application_id", res.data.application_id);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div>
       <Formik
-        initialValues={{
-          socialInsuranceNumber: "",
-          altNumber: "",
-          emergencyContactName: "",
-          emergencyContactNumber: "",
-          emergencyContactRelationship: "",
-          refferedPersonName1: "",
-          refferedPersonContact1: "",
-          refferedPersonName2: "",
-          refferedPersonContact2: "",
-          refferedPersonName3: "",
-          refferedPersonContact3: "",
-          pay: "",
-          legalRightToWorkInCanada: "",
-          accidentRecord1: "",
-          accidentRecord2: "",
-          accidentRecord3: "",
-          prevBondingCompanyName: "",
-          convictedFelony: "",
-          convictedFelonyReason: "",
-          unabletoPeform: "",
-          unabletoPeformReason: "",
-        }}
+        enableReinitialize
+        initialValues={
+          savedData || {
+            socialInsuranceNumber: "",
+            altNumber: "",
+            emergencyContactName: "",
+            emergencyContactNumber: "",
+            emergencyContactRelationship: "",
+            refferedPersonName1: "",
+            refferedPersonContact1: "",
+            refferedPersonName2: "",
+            refferedPersonContact2: "",
+            refferedPersonName3: "",
+            refferedPersonContact3: "",
+            pay: "",
+            legalRightToWorkInCanada: "",
+            accidentRecord1: "",
+            accidentRecord2: "",
+            accidentRecord3: "",
+            prevBondingCompanyName: "",
+            convictedFelony: "",
+            convictedFelonyReason: "",
+            unabletoPeform: "",
+            unabletoPeformReason: "",
+          }
+        }
         onSubmit={(val, actions) => handleLineHaulSubmit(val, actions)}
       >
         {({

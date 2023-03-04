@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
+import { dateFormatter } from "../../utils/common.js";
 
 import styles from "./FormComp.module.css";
 import {
@@ -14,6 +15,8 @@ function GeneralInfo() {
 
   const [eduHistory, setEduHistory] = useState([]);
   const [showSectionOne, setShowSectionOne] = useState(true);
+  const [userEmail, setUserEmail] = useState(localStorage.getItem("email"));
+  const [savedData, setSavedData] = useState();
 
   // Button States
   // const [isNextContinueDisabled, setIsNextContinueDisabled] = useState(true);
@@ -36,10 +39,10 @@ function GeneralInfo() {
     setEduHistory((prev) => [
       ...prev,
       {
-        education: values.eduYear,
-        levelCompleted: values.eduLevel,
-        institutionName: values.eduInstitution,
-        location: values.eduLocation,
+        edu_year: values.eduYear,
+        edu_level: values.eduLevel,
+        edu_instution: values.eduInstitution,
+        edu_location: values.eduLocation,
       },
     ]);
     resetEduForm(values);
@@ -61,15 +64,93 @@ function GeneralInfo() {
         );
   }
 
+  let application_id,
+    data = {};
+
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+
+    if (email) {
+      axios
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generalInfo?email=${email}`
+        )
+        .then((res) => {
+          localStorage.setItem("application_id", res.application_id);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, []);
+
+  useEffect(() => {
+    application_id = localStorage.getItem("application_id");
+
+    if (application_id) {
+      axios
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generalInfo?application_id=${application_id}`
+        )
+        .then((res) => {
+          const {
+            position,
+            application_date,
+            first_name,
+            last_name,
+            email,
+            address1,
+            address2,
+            city,
+            zip,
+            phone,
+            date_of_birth,
+            employment_avail,
+            total_miles,
+            major_city,
+            bond_refusal,
+            cross_borders,
+            ban,
+            ban_company,
+            education,
+          } = res.data.result;
+
+          data = {
+            position: position,
+            applicationDate: application_date,
+            firstName: first_name,
+            lastName: last_name,
+            email: email,
+            address1: address1,
+            address2: address2,
+            city: city,
+            zip: zip,
+            phone: phone,
+            dateOfBirth: date_of_birth,
+            empDate: employment_avail,
+            totalMiles: total_miles,
+            majorCity: major_city,
+            bondRefusal: bond_refusal,
+            crossBorders: cross_borders,
+            ban: ban,
+            banCompany: ban_company,
+          };
+
+          setSavedData(data);
+          setEduHistory(education);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
   // Final Form Submit Handler Function
   const handleGeneralInfoSubmit = (val, actions) => {
-    console.log(val);
     const body = {
       position: val.position,
       application_date: val.applicationDate,
       first_name: val.firstName,
       last_name: val.lastName,
-      email: val.email,
+      email: userEmail,
       address1: val.address1,
       address2: val.address2,
       city: val.city,
@@ -84,13 +165,17 @@ function GeneralInfo() {
       ban: val.ban,
       ban_company: val.banCompany,
       education: eduHistory,
+      application_id: application_id,
     };
+
     axios
-      .post(
-        "https://loadlc-backend-staging.herokuapp.com/api/v1/SS/generalInfo",
-        body
-      )
-      .then(() => console.log("General Info Submitted"))
+      .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generalInfo`, body)
+      .then((res) => {
+        console.log(res);
+        if (!application_id) {
+          localStorage.setItem("application_id", res.data.application_id);
+        }
+      })
       .catch((err) => console.log(err));
   };
 
@@ -107,30 +192,33 @@ function GeneralInfo() {
   return (
     <div>
       <Formik
-        initialValues={{
-          position: "",
-          applicationDate: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-          address1: "",
-          address2: "",
-          city: "",
-          zip: "",
-          phone: "",
-          dateOfBirth: "",
-          empDate: "",
-          totalMiles: "",
-          majorCity: "",
-          bondRefusal: "",
-          crossBorders: "",
-          ban: "",
-          banCompany: "",
-          eduYear: "",
-          eduLevel: "",
-          eduInstitution: "",
-          eduLocation: "",
-        }}
+        enableReinitialize
+        initialValues={
+          savedData || {
+            position: "",
+            applicationDate: "",
+            firstName: "",
+            lastName: "",
+            email: userEmail,
+            address1: "",
+            address2: "",
+            city: "",
+            zip: "",
+            phone: "",
+            dateOfBirth: "",
+            empDate: "",
+            totalMiles: "",
+            majorCity: "",
+            bondRefusal: "",
+            crossBorders: "",
+            ban: "",
+            banCompany: "",
+            eduYear: "",
+            eduLevel: "",
+            eduInstitution: "",
+            eduLocation: "",
+          }
+        }
         onSubmit={(val, actions) => handleGeneralInfoSubmit(val, actions)}
       >
         {({
@@ -188,6 +276,7 @@ function GeneralInfo() {
                           className={styles.inputFieldLarge}
                           type="email"
                           name="email"
+                          disabled={true}
                           placeholder="Your Email"
                         />
                       </div>
@@ -429,7 +518,11 @@ function GeneralInfo() {
                       type="button"
                       onClick={(e) => {
                         e.preventDefault();
-                        setShowInputEducationHistory(true);
+                        eduHistory.length === 2
+                          ? alert(
+                              "Only Two education Entries Required. You can Proceed"
+                            )
+                          : setShowInputEducationHistory(true);
                       }}
                       disabled={showInputEducationHistory ? true : false}
                     >

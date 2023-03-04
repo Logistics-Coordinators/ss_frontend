@@ -14,7 +14,7 @@ import { UserContext } from "../../Context/UserContext.js";
 import LabourConnect from "../../Assets/LabourConnect-whitebg.svg";
 
 function Login() {
-  const url = "https://loadlc-backend-staging.herokuapp.com/api/v1/LC/login";
+  const url = `${process.env.REACT_APP_BACKEND_URL}api/v1/LC/login`;
 
   const navigate = useNavigate();
 
@@ -50,7 +50,8 @@ function Login() {
       headers
     )
       .then((response) => {
-        localStorage.setItem("token", response.data.token);
+        const email = localStorage.setItem("email", val.email);
+        const application = localStorage.setItem("token", response.data.token);
         // localStorage.setItem("role", response.data.user.role);
         const item = localStorage.getItem("token", response.data.token);
         console.log(response);

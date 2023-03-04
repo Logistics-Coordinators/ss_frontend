@@ -4,6 +4,9 @@ import { Formik, Form } from "formik";
 import styles from "./FormComp.module.css";
 
 function UploadDocs() {
+  const handleFilesSubmit = (val, actions) => {
+    console.log([val.first, val.second, val.third, val.fourth]);
+  };
   return (
     <div>
       <Formik
@@ -13,6 +16,7 @@ function UploadDocs() {
           third: null,
           fourth: null,
         }}
+        onSubmit={(val, actions) => handleFilesSubmit(val, actions)}
       >
         {({ values, setFieldValue }) => {
           return (
@@ -70,6 +74,8 @@ function UploadDocs() {
                   />
                 </div>
               </div>
+              {/* TEsting */}
+              <button type="submit">SEE DOCS Logs</button>
             </Form>
           );
         }}

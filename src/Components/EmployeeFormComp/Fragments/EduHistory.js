@@ -1,5 +1,5 @@
 import styles from "../FormComp.module.css";
-import {  Field } from "formik";
+import { Field } from "formik";
 
 // Component to display education card
 const EducationCard = ({ edu, id, handleEduEntryDelete, existingCount }) => {
@@ -39,25 +39,25 @@ const EducationCard = ({ edu, id, handleEduEntryDelete, existingCount }) => {
         <div className={styles.containerEdu}>
           <div className={styles.label}>Education</div>
           <div style={{ marginTop: 0 }} className={styles.inputFieldSmall}>
-            {edu.education}
+            {edu.edu_year}
           </div>
         </div>
         <div className={styles.containerEdu}>
           <div className={styles.label}>Level Completed</div>
           <div style={{ marginTop: 0 }} className={styles.inputFieldSmall}>
-            {edu.levelCompleted}
+            {edu.edu_level}
           </div>
         </div>
         <div className={styles.containerEdu}>
           <div className={styles.label}>Institution Name</div>
           <div style={{ marginTop: 0 }} className={styles.inputFieldSmall}>
-            {edu.institutionName}
+            {edu.edu_instution}
           </div>
         </div>
         <div className={styles.containerEdu}>
           <div className={styles.label}>Location</div>
           <div style={{ marginTop: 0 }} className={styles.inputFieldSmall}>
-            {edu.location}
+            {edu.edu_location}
           </div>
         </div>
       </div>
