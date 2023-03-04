@@ -70,13 +70,14 @@ function GeneralInfo() {
   useEffect(() => {
     const email = localStorage.getItem("email");
 
+    console.log(email);
     if (email) {
       axios
         .get(
           `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generalInfo?email=${email}`
         )
         .then((res) => {
-          localStorage.setItem("application_id", res.application_id);
+          localStorage.setItem("application_id", res.data.application_id);
         })
         .catch((err) => console.log(err));
     }
