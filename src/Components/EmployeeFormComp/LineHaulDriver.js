@@ -75,6 +75,7 @@ function LineHaulDriver() {
         })
         .catch((err) => {
           console.log(err);
+          setIsLoading(false);
         });
     }
   }, []);

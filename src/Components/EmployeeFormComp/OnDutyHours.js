@@ -95,7 +95,10 @@ function OnDutyHours() {
         //   localStorage.setItem("application_id", res.data.application_id);
         // }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
   };
 
   return (
