@@ -1,37 +1,172 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Field, Formik, Form } from "formik";
 import styles from "./FormComp.module.css";
+import Loader from "../../Assets/LoadingAnimation.gif";
+import axios from "axios";
 
 function TermsAndConditions() {
   const [tAndCSection, setTAndCSection] = useState(0);
+  const [userEmail, setUserEmail] = useState(localStorage.getItem("email"));
+  const [savedData, setSavedData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleContinueClick = () => {
     setTAndCSection(tAndCSection + 1);
   };
 
+  let application_id,
+    data = {};
+
+  application_id = localStorage.getItem("application_id");
+
+  useEffect(() => {
+    if (application_id) {
+      setIsLoading(true);
+      axios
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/termsAndCondition?application_id=${application_id}`
+        )
+        .then((res) => {
+          const {
+            terms_consent,
+            licensing,
+            hours_of_work,
+            pre_trip_inspection,
+            positive_for_controlled_substance,
+            alcohol_pre_employement_test,
+            refused_pre_employement_test,
+            name_of_sap,
+            contact_of_sap,
+            address_of_sap,
+            medical_declaration,
+            driver_record_search_auth,
+            procedure_and_policies,
+            consent_to_personal_info,
+          } = res.data.result;
+
+          data = {
+            termsConsent: terms_consent,
+            licensing: licensing,
+            hoursOfWork: hours_of_work,
+            preTripInspection: pre_trip_inspection,
+            positiveForControlledSubstance: positive_for_controlled_substance,
+            alcoholPreEmployementTest: alcohol_pre_employement_test,
+            refusedPreEmployementTest: refused_pre_employement_test,
+            nameOfSap: name_of_sap,
+            contactOfSap: contact_of_sap,
+            addressOfSap: address_of_sap,
+            medicalDeclaration: medical_declaration,
+            driverRecordSearchAuth: driver_record_search_auth,
+            procedureAndPolicies: procedure_and_policies,
+            consentToPersonalInfo: consent_to_personal_info,
+          };
+
+          setSavedData(data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsLoading(false);
+        });
+    }
+  }, []);
+
+  const generateDQFFile = (application_id) => {
+    setIsLoading(true);
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generateDQF`, {
+        application_id,
+      })
+      .then((res) => {
+        setIsLoading(false);
+        alert(res.data.message);
+        console.log(res.data.message);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleTermsSubmit = (val, actions) => {
+    console.log(val.refusedPreEmployementTest);
+    const body = {
+      terms_consent: val.termsConsent,
+      licensing: val.licensing,
+      hours_of_work: val.hoursOfWork,
+      pre_trip_inspection: val.preTripInspection,
+      positive_for_controlled_substance: val.positiveForControlledSubstance,
+      alcohol_pre_employement_test: val.alcoholPreEmployementTest,
+      // refused_pre_employement_test: val.refusedPreEmployementTest,
+      name_of_sap: val.nameOfSap,
+      contact_of_sap: val.contactOfSap,
+      address_of_sap: val.addressOfSap,
+      medical_declaration: val.medicalDeclaration,
+      driver_record_search_auth: val.driverRecordSearchAuth,
+      procedure_and_policies: val.procedureAndPolicies,
+      consent_to_personal_info: val.consentToPersonalInfo,
+      email: localStorage.getItem("email"),
+      application_id: localStorage.getItem("application_id"),
+    };
+
+    console.log(body);
+
+    setIsLoading(true);
+
+    axios
+      .post(
+        `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/termsAndCondition`,
+        body
+      )
+      .then((res) => {
+        console.log(application_id);
+        console.log("Terms and Condition Submitted");
+        setIsLoading(false);
+        // generateDQFFile(application_id);
+        // if (!application_id) {
+        //   localStorage.setItem("application_id", res.data.application_id);
+        // }
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <Formik
-        initialValues={{
-          termsConsent: "",
-          licensing: "",
-          hoursOfWork: "",
-          preTripInspection: "",
-          positiveForControlledSubstance: "",
-          alcoholPreEmployementTest: "",
-          refusedPreEmployementTest: "",
-          nameOfSap: "",
-          contactOfSap: "",
-          addressOfSap: "",
-          medicalDeclaration: "",
-          driverRecordSearchAuth: "",
-          procedureAndPolicies: "",
-          consentToPersonalInfo: "",
-        }}
-        onSubmit={(val, actions) => console.log(val)}
+        enableReinitialize
+        initialValues={
+          savedData || {
+            termsConsent: "",
+            licensing: "",
+            hoursOfWork: "",
+            preTripInspection: "",
+            positiveForControlledSubstance: "",
+            alcoholPreEmployementTest: "",
+            refusedPreEmployementTest: "",
+            nameOfSap: "",
+            contactOfSap: "",
+            addressOfSap: "",
+            medicalDeclaration: "",
+            driverRecordSearchAuth: "",
+            procedureAndPolicies: "",
+            consentToPersonalInfo: "",
+          }
+        }
+        onSubmit={(val, actions) => handleTermsSubmit(val, actions)}
       >
         {({ values }) => (
           <Form>
+            {isLoading ? (
+              <div
+                style={{
+                  position: "fixed",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "fit-content",
+                  zIndex: 3,
+                }}
+              >
+                <img src={Loader} alt="loader" style={{}} />
+              </div>
+            ) : null}
             {tAndCSection === 0 ? (
               <div>
                 <p className={styles.headingText}>
@@ -88,11 +223,11 @@ function TermsAndConditions() {
                   id="termsConsent"
                 >
                   <label className={styles.label}>
-                    <Field type="radio" name="termsConsent" value="Yes" />
+                    <Field type="radio" name="termsConsent" value="Agree" />
                     Agree
                   </label>
                   <label className={styles.label}>
-                    <Field type="radio" name="termsConsent" value="No" />
+                    <Field type="radio" name="termsConsent" value="Disagree" />
                     Disagree
                   </label>
                 </div>
@@ -138,11 +273,11 @@ function TermsAndConditions() {
                       className={styles.radioContainer}
                     >
                       <label>
-                        <Field type="radio" name="licensing" value="Yes" />
+                        <Field type="radio" name="licensing" value="Agree" />
                         Agree
                       </label>
                       <label>
-                        <Field type="radio" name="licensing" value="No" />
+                        <Field type="radio" name="licensing" value="Disagree" />
                         Disagree
                       </label>
                     </div>
@@ -169,11 +304,15 @@ function TermsAndConditions() {
                       className={styles.radioContainer}
                     >
                       <label>
-                        <Field type="radio" name="hoursOfWork" value="Yes" />
+                        <Field type="radio" name="hoursOfWork" value="Agree" />
                         Agree
                       </label>
                       <label>
-                        <Field type="radio" name="hoursOfWork" value="No" />
+                        <Field
+                          type="radio"
+                          name="hoursOfWork"
+                          value="Disagree"
+                        />
                         Disagree
                       </label>
                     </div>
@@ -204,7 +343,7 @@ function TermsAndConditions() {
                         <Field
                           type="radio"
                           name="preTripInspection"
-                          value="Yes"
+                          value="Agree"
                         />
                         Agree
                       </label>
@@ -212,7 +351,7 @@ function TermsAndConditions() {
                         <Field
                           type="radio"
                           name="preTripInspection"
-                          value="No"
+                          value="Disagree"
                         />
                         Disagree
                       </label>
@@ -245,7 +384,7 @@ function TermsAndConditions() {
                         <Field
                           type="radio"
                           name="positiveForControlledSubstance"
-                          value="Yes"
+                          value="Agree"
                         />
                         Agree
                       </label>
@@ -253,7 +392,7 @@ function TermsAndConditions() {
                         <Field
                           type="radio"
                           name="positiveForControlledSubstance"
-                          value="No"
+                          value="Disagree"
                         />
                         Disagree
                       </label>
@@ -278,7 +417,7 @@ function TermsAndConditions() {
                         <Field
                           type="radio"
                           name="alcoholPreEmployementTest"
-                          value="Yes"
+                          value="Agree"
                         />
                         Agree
                       </label>
@@ -286,7 +425,7 @@ function TermsAndConditions() {
                         <Field
                           type="radio"
                           name="alcoholPreEmployementTest"
-                          value="No"
+                          value="Disagree"
                         />
                         Disagree
                       </label>
@@ -311,7 +450,7 @@ function TermsAndConditions() {
                         <Field
                           type="radio"
                           name="refusedPreEmployementTest "
-                          value="Yes"
+                          value="Agree"
                         />
                         Agree
                       </label>
@@ -319,7 +458,7 @@ function TermsAndConditions() {
                         <Field
                           type="radio"
                           name="refusedPreEmployementTest "
-                          value="No"
+                          value="Disagree"
                         />
                         Disagree
                       </label>
@@ -327,7 +466,7 @@ function TermsAndConditions() {
                   </div>
                   <div>
                     <p className={styles.headingText}>
-                      If your answer is yes any above questions please provide
+                      If your answer is Agree any above questions please provide
                       information's below
                     </p>
                     <div className={styles.container}>
@@ -437,7 +576,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="medicalDeclaration"
-                        value="Yes"
+                        value="Agree"
                       />
                       Agree
                     </label>
@@ -445,7 +584,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="medicalDeclaration"
-                        value="No"
+                        value="Disagree"
                       />
                       Disagree
                     </label>
@@ -482,7 +621,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="driverRecordSearchAuth"
-                        value="Yes"
+                        value="Agree"
                       />
                       Agree
                     </label>
@@ -490,7 +629,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="driverRecordSearchAuth"
-                        value="No"
+                        value="Disagree"
                       />
                       Disagree
                     </label>
@@ -527,7 +666,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="driverAcknowledgement"
-                        value="Yes"
+                        value="Agree"
                       />
                       Agree
                     </label>
@@ -535,7 +674,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="driverAcknowledgement"
-                        value="No"
+                        value="Disagree"
                       />
                       Disagree
                     </label>
@@ -569,7 +708,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="procedureAndPolicies"
-                        value="Yes"
+                        value="Agree"
                       />
                       Agree
                     </label>
@@ -577,7 +716,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="procedureAndPolicies"
-                        value="No"
+                        value="Disagree"
                       />
                       Disagree
                     </label>
@@ -617,7 +756,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="consentToPersonalInfo"
-                        value="Yes"
+                        value="Agree"
                       />
                       Agree
                     </label>
@@ -625,7 +764,7 @@ function TermsAndConditions() {
                       <Field
                         type="radio"
                         name="consentToPersonalInfo"
-                        value="No"
+                        value="Disagree"
                       />
                       Disagree
                     </label>
@@ -642,6 +781,20 @@ function TermsAndConditions() {
                 >
                   Submit
                 </button>
+                <div>
+                  <button
+                    className={styles.buttonMed}
+                    style={{
+                      marginTop: "2rem",
+                      width: "15rem",
+                      padding: "10px 35px",
+                    }}
+                    type="button"
+                    onClick={() => generateDQFFile(application_id)}
+                  >
+                    Finish and Genrate DQF
+                  </button>
+                </div>
               </div>
             ) : null}
           </Form>

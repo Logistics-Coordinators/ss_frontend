@@ -42,7 +42,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
             // name="empName"
             placeholder="Enter your employee name"
           >
-            {emp.empName}
+            {emp.employer_name}
           </div>
         </div>
 
@@ -54,7 +54,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
             // name="currAddress"
             placeholder="Enter your position held by you"
           >
-            {emp.positionHeld}
+            {emp.position_held}
           </div>
         </div>
 
@@ -68,7 +68,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
         >
           <div>
             <div className={styles.label}>Start Date</div>
-            <div className={styles.inputFieldSmallEmp}>{emp.startDate}</div>
+            <div className={styles.inputFieldSmallEmp}>{emp.start_date}</div>
           </div>
           <div>
             <div className={styles.label}>End Date</div>
@@ -77,7 +77,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
               // name="empDate"
               type="date"
             >
-              {emp.endDate}
+              {emp.end_date}
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
             // name="currAddress"
             placeholder="Select the employee city"
           >
-            {emp.workCity}
+            {emp.work_city}
           </div>
         </div>
 
@@ -101,7 +101,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
             style={{ marginTop: 0 }}
             placeholder="Enter employee postal code"
           >
-            {emp.postalCode}
+            {emp.postal_code}
           </div>
         </div>
 
@@ -123,7 +123,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
             style={{ marginTop: 0 }}
             placeholder="Enter contact person name"
           >
-            {emp.contactPersonName}
+            {emp.contact_person_name}
           </div>
         </div>
 
@@ -134,7 +134,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
             style={{ marginTop: 0 }}
             placeholder="Enter contact person number"
           >
-            {emp.contactPersonNumber}
+            {emp.contact_person_number}
           </div>
         </div>
 
@@ -145,7 +145,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
             style={{ marginTop: 0 }}
             placeholder="State the reasons"
           >
-            {emp.reasonForLeaving}
+            {emp.reason_for_leaving}
           </div>
         </div>
 
@@ -159,7 +159,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
               aria-labelledby="bondRefusal"
               className={styles.radioContainer}
             >
-              {emp.subjectToFMCSR === "Yes" ? (
+              {emp.subject_to_FMCSR === "Yes" ? (
                 <label>
                   <Field checked={true} type="radio" value="Yes" />
                   Yes
@@ -178,7 +178,7 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
               Was your job designated as safe sensitive functions
             </div>
             <div role="group" className={styles.radioContainer}>
-              {emp.safeSensitiveFunction === "Yes" ? (
+              {emp.safe_sensitive_function === "Yes" ? (
                 <label>
                   <Field checked={true} type="radio" value="Yes" />
                   Yes

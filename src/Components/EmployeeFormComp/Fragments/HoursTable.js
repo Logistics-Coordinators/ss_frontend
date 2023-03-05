@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./HoursTable.module.css";
 
-function HoursTable({ setFieldValue }) {
-  const [dateHours, setDateHours] = useState([]);
-
+function HoursTable({ setFieldValue, dateHours, setDateHours }) {
   useEffect(() => {
     setFieldValue("dayDateHoursTable", dateHours);
 

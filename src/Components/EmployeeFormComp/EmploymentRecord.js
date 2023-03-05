@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Formik, Form } from "formik";
 
 import styles from "./FormComp.module.css";
+import Loader from "../../Assets/LoadingAnimation.gif";
 
 import {
   EmploymentCard,
@@ -13,6 +15,9 @@ function EmploymentRecord() {
     useState(true);
 
   const [empHistory, setEmpHistory] = useState([]);
+  const [userEmail, setUserEmail] = useState(localStorage.getItem("email"));
+  const [savedData, setSavedData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const resetEmpForm = (values) => {
     values.empName = "";
@@ -38,18 +43,18 @@ function EmploymentRecord() {
     setEmpHistory((prev) => [
       ...prev,
       {
-        empName: values.empName,
-        positionHeld: values.positionHeld,
-        startDate: values.startDate,
-        endDate: values.endDate,
-        workCity: values.workCity,
-        postalCode: values.postalCode,
+        employer_name: values.empName,
+        position_held: values.positionHeld,
+        start_date: values.startDate,
+        end_date: values.endDate,
+        work_city: values.workCity,
+        postal_code: values.postalCode,
         wage: values.wage,
-        contactPersonName: values.contactPersonName,
-        contactPersonNumber: values.contactPersonNumber,
-        reasonForLeaving: values.reasonForLeaving,
-        subjectToFMCSR: values.subjectToFMCSR,
-        safeSensitiveFunction: values.safeSensitiveFunction,
+        contact_person_name: values.contactPersonName,
+        contact_person_number: values.contactPersonNumber,
+        reason_for_leaving: values.reasonForLeaving,
+        subject_to_FMCSR: values.subjectToFMCSR,
+        safe_sensitive_function: values.safeSensitiveFunction,
       },
     ]);
     resetEmpForm(values);
@@ -71,14 +76,58 @@ function EmploymentRecord() {
       : resetEmpForm(values);
   }
 
+  let application_id,
+    data = {};
+
+  application_id = localStorage.getItem("application_id");
+
+  useEffect(() => {
+    if (application_id) {
+      setIsLoading(true);
+
+      axios
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/empRecord?application_id=${application_id}`
+        )
+        .then((res) => {
+          const { employment_record } = res.data.result;
+
+          setEmpHistory(employment_record);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsLoading(false);
+        });
+    }
+  }, []);
+
   // Final Form Submit Handler Function
   const handleEmploymentRecordSubmit = (val, actions) => {
-    console.log(val);
+    const body = {
+      email: localStorage.getItem("email"),
+      employment_record: empHistory,
+      application_id: localStorage.getItem("application_id"),
+    };
+
+    setIsLoading(true);
+
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/empRecord`, body)
+      .then((res) => {
+        console.log(application_id);
+        setIsLoading(false);
+        // if (!application_id) {
+        //   localStorage.setItem("application_id", res.data.application_id);
+        // }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <div>
       <Formik
+        enableReinitialize
         initialValues={{
           empName: "",
           positionHeld: "",
@@ -98,6 +147,20 @@ function EmploymentRecord() {
         {({ values }) => (
           <Form>
             <div style={{ position: "relative" }}>
+              {isLoading ? (
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "fit-content",
+                    zIndex: 3,
+                  }}
+                >
+                  <img src={Loader} alt="loader" style={{}} />
+                </div>
+              ) : null}
               {/* Education History Section */}
               <div style={{ position: "relative" }}>
                 {empHistory.map((emp, index) => (
