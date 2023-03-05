@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import styles from "./FormComp.module.css";
+
 import axios from "axios";
+import Loader from "../../Assets/LoadingAnimation.gif";
 
 import {
   QualificationCard,
@@ -12,6 +14,10 @@ function DriverExperience() {
   const [qualificationHistory, setQualificationHistory] = useState([]);
   const [showInputQualificationHistory, setShowInputQualificationHistory] =
     useState(true);
+
+  const [userEmail, setUserEmail] = useState(localStorage.getItem("email"));
+  const [savedData, setSavedData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const resetQlyForm = (values) => {
     values.instituteName = "";
@@ -30,8 +36,8 @@ function DriverExperience() {
     setQualificationHistory((prev) => [
       ...prev,
       {
-        instituteName: values.instituteName,
-        instituteLocation: values.instituteLocation,
+        institute_name: values.instituteName,
+        institute_location: values.instituteLocation,
         duration: values.duration,
         skills: values.skills,
         courses: values.courses,
@@ -54,33 +60,125 @@ function DriverExperience() {
         );
   }
 
+  let application_id,
+    data = {};
+
+  application_id = localStorage.getItem("application_id");
+
+  useEffect(() => {
+    if (application_id) {
+      setIsLoading(true);
+      axios
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}api/v1/SS/driverExp?application_id=${application_id}`
+        )
+        .then((res) => {
+          const {
+            driver_experience,
+            from_date,
+            end_date,
+            class_of_equipment, //Array
+            straight_truck_miles,
+            tractor_and_semi_trailor_miles,
+            tractor_and_two_wheeler_miles,
+            tractor_and_three_wheeler_miles,
+            motor_coach_school_bus_miles,
+            states_operated,
+            type_of_equipment, //Array
+            experience_and_qualification,
+            qualification, //Array different
+            entitled_to_work,
+          } = res.data.result;
+
+          data = {
+            driverExperience: driver_experience,
+            fromDate: from_date,
+            endDate: end_date,
+            classOfEquipment: class_of_equipment,
+            StraightTruckMiles: straight_truck_miles,
+            TractorAndSemiTrailorMiles: tractor_and_semi_trailor_miles,
+            TractorAndTwoWheelerMiles: tractor_and_two_wheeler_miles,
+            TractorAndThreeWheelerMiles: tractor_and_three_wheeler_miles,
+            MotorCoachSchoolBusMiles: motor_coach_school_bus_miles,
+            experienceAndQualification: experience_and_qualification,
+            statesOperated: states_operated,
+            typeOfEquipment: type_of_equipment,
+            entitledToWork: entitled_to_work,
+          };
+
+          console.log("Driver Exp Data: ", data);
+
+          setSavedData(data);
+          setQualificationHistory(qualification);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsLoading(false);
+        });
+    }
+  }, []);
+
   function handleSubmit(val, actions) {
-    console.log(val);
+    const body = {
+      email: userEmail,
+      application_id: localStorage.getItem("application_id"),
+      driver_experience: val.driverExperience,
+      from_date: val.fromDate,
+      end_date: val.endDate,
+      class_of_equipment: val.classOfEquipment,
+      straight_truck_miles: val.StraightTruckMiles,
+      tractor_and_semi_trailor_miles: val.TractorAndSemiTrailorMiles,
+      tractor_and_two_wheeler_miles: val.TractorAndTwoWheelerMiles,
+      tractor_and_three_wheeler_miles: val.TractorAndThreeWheelerMiles,
+      motor_coach_school_bus_miles: val.MotorCoachSchoolBusMiles,
+      states_operated: val.statesOperated,
+      type_of_equipment: val.typeOfEquipment, //Array
+      experience_and_qualification: val.experienceAndQualification,
+      qualification: qualificationHistory, //Array
+      entitled_to_work: val.entitledToWork,
+    };
+
+    setIsLoading(true);
+
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/driverExp`, body)
+      .then((res) => {
+        console.log(application_id);
+        setIsLoading(false);
+        // if (!application_id) {
+        //   localStorage.setItem("application_id", res.data.application_id);
+        // }
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
     <div>
       <Formik
-        initialValues={{
-          driverExperience: "",
-          fromDate: "",
-          endDate: "",
-          classOfEquipment: [],
-          StraightTruckMiles: "",
-          TractorAndSemiTrailorMiles: "",
-          TractorAndTwoWheelerMiles: "",
-          TractorAndThreeWheelerMiles: "",
-          MotorCoachSchoolBusMiles: "",
-          experienceAndQualification: "",
-          statesOperated: "",
-          typeOfEquipment: [],
-          instituteName: "",
-          instituteLocation: "",
-          duration: "",
-          skills: "",
-          courses: "",
-          entitledToWork: "",
-        }}
+        enableReinitialize
+        initialValues={
+          savedData || {
+            driverExperience: "",
+            fromDate: "",
+            endDate: "",
+            classOfEquipment: [],
+            StraightTruckMiles: "",
+            TractorAndSemiTrailorMiles: "",
+            TractorAndTwoWheelerMiles: "",
+            TractorAndThreeWheelerMiles: "",
+            MotorCoachSchoolBusMiles: "",
+            experienceAndQualification: "",
+            statesOperated: "",
+            typeOfEquipment: [],
+            instituteName: "",
+            instituteLocation: "",
+            duration: "",
+            skills: "",
+            courses: "",
+            entitledToWork: "",
+          }
+        }
         onSubmit={(val, actions) => handleSubmit(val, actions)}
       >
         {({ values }) => (
@@ -91,6 +189,20 @@ function DriverExperience() {
                 marginLeft: "2rem",
               }}
             >
+              {isLoading ? (
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    width: "fit-content",
+                    zIndex: 3,
+                  }}
+                >
+                  <img src={Loader} alt="loader" style={{}} />
+                </div>
+              ) : null}
               <div className={styles.generalLeft}>
                 <div className={styles.containerSelect}>
                   <div
@@ -133,7 +245,7 @@ function DriverExperience() {
                       <Field
                         className={styles.inputFieldSmall}
                         type="date"
-                        name="fromDate"
+                        name="endDate"
                         placeholder="Date"
                       />
                     </div>
@@ -414,6 +526,16 @@ function DriverExperience() {
                 knowledge.
               </p>
             </div>
+            <button
+              className={styles.buttonMed}
+              style={{
+                width: "15rem",
+                padding: "10px 35px",
+              }}
+              type="submit"
+            >
+              Continue to Next Page
+            </button>
           </Form>
         )}
       </Formik>

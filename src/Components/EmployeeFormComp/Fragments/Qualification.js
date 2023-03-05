@@ -35,7 +35,7 @@ const QualificationCard = ({
         <div className={styles.containerEdu}>
           <div className={styles.label}>Institution Name</div>
           <div className={styles.inputFieldSmall} style={{ marginTop: 0 }}>
-            {qly.instituteName}
+            {qly.institute_name}
           </div>
         </div>
 
@@ -46,7 +46,7 @@ const QualificationCard = ({
             style={{ marginTop: 0 }}
             name="instituteLocation"
           >
-            {qly.instituteLocation}
+            {qly.institute_location}
           </div>
         </div>
 
