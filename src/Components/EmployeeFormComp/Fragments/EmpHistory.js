@@ -149,7 +149,41 @@ const EmploymentCard = ({ emp, id, handleEmpEntryDelete, existingCount }) => {
           </div>
         </div>
 
+        <div className={styles.containerEmp}>
+          <div className={styles.labelEmp}>Refferal Email</div>
+          <div
+            className={styles.inputFieldLargeEmp}
+            style={{ marginTop: 0 }}
+            placeholder="State the reasons"
+          >
+            {emp.referral_email}
+          </div>
+        </div>
+
         <div className={styles.containerSelectEmp}>
+          <div style={{ display: "flex", marginBottom: "1rem" }}>
+            <div className={styles.labelSelect} id="referral_email_active">
+              Should we verify your Refferal?
+            </div>
+            <div
+              role="group"
+              aria-labelledby="bondRefusal"
+              className={styles.radioContainer}
+            >
+              {emp.referral_email_active === "Yes" ? (
+                <label>
+                  <Field checked={true} type="radio" value="Yes" />
+                  Yes
+                </label>
+              ) : (
+                <label>
+                  <Field checked={true} type="radio" value="No" />
+                  No
+                </label>
+              )}
+            </div>
+          </div>
+
           <div style={{ display: "flex", marginBottom: "1rem" }}>
             <div className={styles.labelSelect}>
               Where you subject to the FMCSRs while employed
@@ -354,7 +388,37 @@ const InputEmploymentHistory = ({
           />
         </div>
 
+        <div className={styles.containerEmp}>
+          <div className={styles.labelEmp}>Refferal Email</div>
+          <Field
+            className={styles.inputFieldLargeEmp}
+            style={{ marginTop: 0 }}
+            name="referralEmail"
+            placeholder="Email of the Person Reffering"
+          />
+        </div>
+
         <div className={styles.containerSelectEmp}>
+          <div style={{ display: "flex", marginBottom: "1rem" }}>
+            <div className={styles.labelSelect} id="referral_email_active">
+              Should we verify your Refferal?
+            </div>
+            <div
+              role="group"
+              aria-labelledby="referral_email_active"
+              className={styles.radioContainer}
+            >
+              <label>
+                <Field type="radio" name="referral_email_active" value="Yes" />
+                Yes
+              </label>
+              <label>
+                <Field type="radio" name="referral_email_active" value="No" />
+                No
+              </label>
+            </div>
+          </div>
+
           <div style={{ display: "flex", marginBottom: "1rem" }}>
             <div className={styles.labelSelect} id="subjectToFMCSR">
               Where you subject to the FMCSRs while employed

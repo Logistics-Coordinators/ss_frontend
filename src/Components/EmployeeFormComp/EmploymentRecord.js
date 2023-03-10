@@ -32,11 +32,13 @@ function EmploymentRecord() {
     values.reasonForLeaving = "";
     values.subjectToFMCSR = "";
     values.safeSensitiveFunction = "";
+    values.referralEmail = "";
+    values.referralEmailActive = "";
 
     setShowInputEmploymentHistory(false);
   };
 
-  function handleEmpFormDone(values) {
+  function handleEmpFormDone(values) {  
     // Edu form validation goes here
 
     // console.log(eduForm);
@@ -55,6 +57,8 @@ function EmploymentRecord() {
         reason_for_leaving: values.reasonForLeaving,
         subject_to_FMCSR: values.subjectToFMCSR,
         safe_sensitive_function: values.safeSensitiveFunction,
+        referral_email: values.referralEmail,
+        referral_email_active: values.referralEmailActive,
       },
     ]);
     resetEmpForm(values);
@@ -141,6 +145,8 @@ function EmploymentRecord() {
           reasonForLeaving: "",
           subjectToFMCSR: "",
           safeSensitiveFunction: "",
+          referralEmail: "",
+          referralEmailActive: "",
         }}
         onSubmit={(val, actions) => handleEmploymentRecordSubmit(val, actions)}
       >

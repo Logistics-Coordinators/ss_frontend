@@ -71,10 +71,10 @@ function TermsAndConditions() {
     }
   }, []);
 
-  const generateDQFFile = (application_id) => {
+  const submitCompleteForm = (application_id) => {
     setIsLoading(true);
     axios
-      .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/generateDQF`, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}api/v1/SS/submitDQF`, {
         application_id,
       })
       .then((res) => {
@@ -790,7 +790,7 @@ function TermsAndConditions() {
                       padding: "10px 35px",
                     }}
                     type="button"
-                    onClick={() => generateDQFFile(application_id)}
+                    onClick={() => submitCompleteForm(application_id)}
                   >
                     Finish and Genrate DQF
                   </button>

@@ -28,12 +28,6 @@ function LineHaulDriver() {
             emergency_contact_name,
             emergency_contact_number,
             emergency_contact_relationship,
-            reffered_person_name_1,
-            reffered_person_email_1,
-            reffered_person_name_2,
-            reffered_person_email_2,
-            reffered_person_name_3,
-            reffered_person_email_3,
             pay,
             legal_right_to_work_in_canada,
             accident_record1,
@@ -52,12 +46,6 @@ function LineHaulDriver() {
             emergencyContactName: emergency_contact_name,
             emergencyContactNumber: emergency_contact_number,
             emergencyContactRelationship: emergency_contact_relationship,
-            refferedPersonName1: reffered_person_name_1,
-            refferedPersonContact1: reffered_person_email_1,
-            refferedPersonName2: reffered_person_name_2,
-            refferedPersonContact2: reffered_person_email_2,
-            refferedPersonName3: reffered_person_name_3,
-            refferedPersonContact3: reffered_person_email_3,
             pay: pay,
             legalRightToWorkInCanada: legal_right_to_work_in_canada,
             accidentRecord1: accident_record1,
@@ -88,12 +76,6 @@ function LineHaulDriver() {
       emergency_contact_name: val.emergencyContactName,
       emergency_contact_number: val.emergencyContactNumber,
       emergency_contact_relationship: val.emergencyContactRelationship,
-      reffered_person_name_1: val.refferedPersonName1,
-      reffered_person_email_1: val.refferedPersonContact1,
-      reffered_person_name_2: val.refferedPersonName2,
-      reffered_person_email_2: val.refferedPersonContact2,
-      reffered_person_name_3: val.refferedPersonName3,
-      reffered_person_email_3: val.refferedPersonContact3,
       pay: val.pay,
       legal_right_to_work_in_canada: val.legalRightToWorkInCanada,
       accident_record1: val.accidentRecord1,
@@ -132,12 +114,6 @@ function LineHaulDriver() {
             emergencyContactName: "",
             emergencyContactNumber: "",
             emergencyContactRelationship: "",
-            refferedPersonName1: "",
-            refferedPersonContact1: "",
-            refferedPersonName2: "",
-            refferedPersonContact2: "",
-            refferedPersonName3: "",
-            refferedPersonContact3: "",
             pay: "",
             legalRightToWorkInCanada: "",
             accidentRecord1: "",
@@ -229,54 +205,6 @@ function LineHaulDriver() {
                       className={styles.inputFieldLarge}
                       name="emergencyContactRelationship"
                       placeholder="Relationships with the emergency contact person"
-                    />
-                  </div>
-                  <div className={styles.container}>
-                    <div className={styles.label}>Referral 1</div>
-                    <Field
-                      className={styles.inputFieldLarge}
-                      name="refferedPersonName1"
-                      placeholder="Specify name"
-                    />
-                  </div>
-                  <div className={styles.container}>
-                    <div className={styles.label}>Referral 1 Email</div>
-                    <Field
-                      className={styles.inputFieldLarge}
-                      name="refferedPersonContact1"
-                      placeholder="Specify Email"
-                    />
-                  </div>
-                  <div className={styles.container}>
-                    <div className={styles.label}>Referral 2</div>
-                    <Field
-                      className={styles.inputFieldLarge}
-                      name="refferedPersonName2"
-                      placeholder="Specify name"
-                    />
-                  </div>
-                  <div className={styles.container}>
-                    <div className={styles.label}>Referral 2 Email</div>
-                    <Field
-                      className={styles.inputFieldLarge}
-                      name="refferedPersonContact2"
-                      placeholder="Specify Email"
-                    />
-                  </div>
-                  <div className={styles.container}>
-                    <div className={styles.label}>Referral 3</div>
-                    <Field
-                      className={styles.inputFieldLarge}
-                      name="refferedPersonName3"
-                      placeholder="Specify name"
-                    />
-                  </div>
-                  <div className={styles.container}>
-                    <div className={styles.label}>Referral 3 Email</div>
-                    <Field
-                      className={styles.inputFieldLarge}
-                      name="refferedPersonContact3"
-                      placeholder="Specify Email"
                     />
                   </div>
                   <div className={styles.container}>
