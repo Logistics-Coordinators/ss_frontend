@@ -400,20 +400,20 @@ const InputEmploymentHistory = ({
 
         <div className={styles.containerSelectEmp}>
           <div style={{ display: "flex", marginBottom: "1rem" }}>
-            <div className={styles.labelSelect} id="referral_email_active">
+            <div className={styles.labelSelect} id="referralEmailActive">
               Should we verify your Refferal?
             </div>
             <div
               role="group"
-              aria-labelledby="referral_email_active"
+              aria-labelledby="referralEmailActive"
               className={styles.radioContainer}
             >
               <label>
-                <Field type="radio" name="referral_email_active" value="Yes" />
+                <Field type="radio" name="referralEmailActive" value="Yes" />
                 Yes
               </label>
               <label>
-                <Field type="radio" name="referral_email_active" value="No" />
+                <Field type="radio" name="referralEmailActive" value="No" />
                 No
               </label>
             </div>
